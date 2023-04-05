@@ -1,0 +1,63 @@
+img.h128 {
+    height: 128px;
+}
+
+img.h160 {
+    height: 160px;
+}
+
+img.h192 {
+    height: 192px;
+}
+
+img.h224 {
+    height: 224px;
+}
+
+img.h256 {
+    height: 256px;
+}
+
+img.h288 {
+    height: 288px;
+}
+
+img.h320 {
+    height: 320px;
+}
+
+img.h352 {
+    height: 352px;
+}
+
+img.h384 {
+    height: 384px;
+}
+
+ul.about {
+    border: 1px dashed;
+    font-family: monospace;
+    list-style: none;
+    font-size: smaller;
+    padding: 1em;
+}
+
+.color-dummies {
+    color: #ffec00 !important;
+}
+
+.color-twitter {
+    color: #1d9bf0 !important;
+}
+
+.color-github {
+    color: #f8f8f8 !important;
+}
+
+.color-gitlab {
+    color: #fc6d26 !important;
+}
+
+.color-bitbucket {
+    color: #2684ff !important;
+}
