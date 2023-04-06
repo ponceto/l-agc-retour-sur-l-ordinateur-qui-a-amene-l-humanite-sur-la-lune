@@ -34,12 +34,17 @@ img.h384 {
     height: 384px;
 }
 
-ul.about {
-    border: 1px dashed;
+table.about {
+    border: none;
     font-family: monospace;
-    list-style: none;
-    font-size: smaller;
-    padding: 1em;
+}
+
+table.about tr {
+    border: none;
+}
+
+table.about td {
+    border: none;
 }
 
 .color-dummies {
