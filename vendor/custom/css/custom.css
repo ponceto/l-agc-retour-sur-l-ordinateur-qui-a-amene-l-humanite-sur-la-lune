@@ -34,6 +34,10 @@ img.h384 {
     height: 384px;
 }
 
+img.h525 {
+    height: 525px;
+}
+
 table.about {
     border: none;
     font-family: monospace;
