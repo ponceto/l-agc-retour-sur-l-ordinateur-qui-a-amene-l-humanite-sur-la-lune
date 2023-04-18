@@ -34,6 +34,22 @@ img.h384 {
     height: 384px;
 }
 
+img.h416 {
+    height: 416px;
+}
+
+img.h448 {
+    height: 448px;
+}
+
+img.h480 {
+    height: 480px;
+}
+
+img.h512 {
+    height: 512px;
+}
+
 img.h525 {
     height: 525px;
 }
