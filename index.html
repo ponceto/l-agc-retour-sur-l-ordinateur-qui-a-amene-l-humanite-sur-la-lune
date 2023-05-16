@@ -235,7 +235,7 @@
                         <p><img class="h384" src="assets/images/CM-interior.jpg" alt="Tableau de bord du module de commande"></p>
                     </section>
                     <section>
-                        <h3>La liaison avec le sol et télémétrie</h3>
+                        <h3>La liaison avec le sol et la télémétrie</h3>
                         <p><img class="h384" src="assets/images/mission-control.jpg" alt="Photographie du centre de contrêle"></p>
                         <aside class="notes">
                             Consistait essentiellement à envoyer des snapshot de la RAM.<br>
@@ -252,9 +252,28 @@
                         </aside>
                     </section>
                     <section>
-                        <h3>Quelle puissance ?</h3>
-                        <p>Une (r)évolution technologique</p>
-                        <p><img class="h384" src="assets/images/nokia-3310.png" alt="nokia-3310"></p>
+                        <h3>Caractéristiques de l'AGC</h3>
+                        <ul>
+                            <li class="fragment fade-up">Fréquence principale de 2.048 MHz</li>
+                            <li class="fragment fade-up">Processeur en complément à 1</li>
+                            <li class="fragment fade-up">Largeur des registres de 16-bits</li>
+                            <li class="fragment fade-up">Consommation de 55 Watts</li>
+                            <li class="fragment fade-up">Dimensions de 61 cm × 32 cm × 17 cm</li>
+                            <li class="fragment fade-up">Poids total de 32 Kg</li>
+                        </ul>
+                        <aside class="notes">
+                            <p>L'horloge est divisée par deux pour produire une horloge à quatre phases de 1,024 MHz que l'AGC utilise pour effectuer ses opérations internes. L'horloge de 1,024 MHz est également divisée par deux pour produire un signal de 512 kHz appelé fréquence maîtresse ; ce signal est utilisé pour synchroniser les systèmes externes du vaisseau spatial Apollo.</p>
+                            <p>La fréquence maîtresse est ensuite divisée par un diviseur, d'abord par cinq à l'aide d'un compteur en anneau pour produire un signal de 102,4 kHz. Celui-ci est ensuite divisé par deux à travers 17 étapes successives appelées F1 (51,2 kHz) à F17 (0,78125 Hz). L'étape F10 (100 Hz) est renvoyée à l'AGC pour incrémenter l'horloge en temps réel et d'autres compteurs involontaires à l'aide de Pinc. L'étape F17 est utilisée pour faire fonctionner l'AGC de manière intermittente lorsqu'il est en mode veille.</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>La (r)évolution technologique</h3>
+                        <p>Quelle puissance ?</p>
+                        <p class="r-stack">
+                            <img class="h384 fragment" src="assets/images/nothing-greater-than-agc.png" alt="nothing-greater-than-agc">
+                            <img class="h384 fragment" src="assets/images/nokia-3310-greater-than-agc.png" alt="nokia-3310-greater-than-agc">
+                            <img class="h384 fragment" src="assets/images/numworks-greater-than-agc.png" alt="numworks-greater-than-agc">
+                        </p>
                         <aside class="notes">
                             <p>Pas de notes ...</p>
                         </aside>
