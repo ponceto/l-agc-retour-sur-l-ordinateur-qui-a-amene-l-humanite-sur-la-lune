@@ -12,9 +12,11 @@
         <link rel="stylesheet" href="vendor/reveal.js/plugin/highlight/monokai.css">
         <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="vendor/custom/css/custom.css">
+        <script id="MathJax-script" async src="vendor/custom/js/mathjax.tex-mml-chtml.js"></script>
     </head>
     <body>
         <div class="reveal">
+
             <div class="slides">
                 <section data-background="assets/images/background-0.jpg"  data-transition="zoom">
                     <h1>Sunny Tech 2023</h1>
@@ -250,6 +252,7 @@
                         </aside>
                     </section>
                 </section>
+
                 <section data-background="assets/images/background-1.jpg" data-transition="slide">
                     <section>
                         <h2>Le hardware</h2>
@@ -405,6 +408,7 @@
                         </aside>
                     </section>
                 </section>
+
                 <section data-background="assets/images/background-1.jpg" data-transition="slide">
                     <section>
                         <h2>Le système</h2>
@@ -414,41 +418,71 @@
                         </aside>
                     </section>
                     <section>
-                        <h3>Interpréteur</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
-                        <aside class="notes">
-                            <p>Pas de notes ...</p>
-                        </aside>
-                    </section>
-                    <section>
-                        <h3>Exécuteur</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
-                        <aside class="notes">
-                            <p>Pas de notes ...</p>
-                        </aside>
-                    </section>
-                    <section>
-                        <h3>Machine virtuelle</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
-                        <aside class="notes">
-                            <p>Pas de notes ...</p>
-                        </aside>
-                    </section>
-                    <section>
                         <h3>Multitâche coopératif</h3>
+                        <p class="fragment fade-up">Cooperative multiprogramming & Preemptive multiprogramming</p>
+                        <aside class="notes">
+                            <p>Problèmes complèxes et variés à résoudre, séparer des programmes est un enjeux majeur pour gérer la complexité et permettre une bonne testabilité.</p>
+                            <p>Rappel: un seul processeur mono-coeur, et mono-thread</p>
+                            <p>Cooperative multiprogramming: "je peux rendre la main"</p>
+                            <p>Preemptive multiprogramming: "ton temps est écoulé, rend la main"</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Exécuteur : le "light OS" de l'AGC</h3>
+                        <p>Ensemble de routines pour manager les processus.</p>
+                        <p>Table des processus: Core Set table</p>
+                        <p><img class="h224" src="assets/images/corset.png" alt='Schéma explicatif du "core set"'></p>
+                        <aside class="notes">
+                            <p>Routines: ajouter/retirer un job, changer la priorité, changer le job en cours</p>
+                            <p>Core set: 6 emplacements pour le CSM, 7 emplacements pour le LM</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Gestion des erreurs</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
                         <aside class="notes">
                             <p>Pas de notes ...</p>
                         </aside>
                     </section>
                     <section>
-                        <h3>Espaces mémoire</h3>
+                        <h3>Gestion interuptions IO</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
                         <aside class="notes">
                             <p>Pas de notes ...</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Interpréteur : la "VM" de l'AGC</h3>
+                        <p>Une nouvelle architecture CPU "logicielle"</p>
+                        <p>Apporte des nouvelles capacités :</p> 
+                        <ul>
+                            <li>doubles & triple précisions</li>
+                            <li>vecteurs</li>
+                            <li>matrices</li>
+                            <li>trigonométrie</li>
+                            <li>...</li>
+                        </ul>
+                        <aside class="notes">
+                            <p>Pas de notes ...</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Langage de haut niveau</h3>
+                        <aside class="notes">
+                            <p>Pour l'AGC, pas de langage compilé, on code directement sur le langage intermédiaire</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Langage de haut niveau</h3>
+                        <p>\[x = {-b + \sqrt{b^2-4ac} \over 2a}\]</p>
+                        <p><img class="h384" src="assets/images/arbre-interpretation.png" alt="Arbre d'interpretation de l'expression: x = (-b + sqrt(b² - 4ac)) / 2a"></p>
+                        <aside class="notes">
+                            <p>Interpretation sous forme d'arbre</p>
+                            <p>Le plus efficient en consommation de mémoire : chaque valeur intermédiaire est stocké dans une pile</p>
                         </aside>
                     </section>
                 </section>
+
                 <section data-background="assets/images/background-1.jpg" data-transition="slide">
                     <section>
                         <h2>Le software</h2>
