@@ -412,7 +412,7 @@
                 <section data-background="assets/images/background-1.jpg" data-transition="slide">
                     <section>
                         <h2>Le système</h2>
-                        <p><img class="h384" src="assets/images/eagle.png" alt="Eagle"></p>
+                        <p><img class="h525" src="assets/images/margaret_hamilton5.jpg" alt="Margaret Hamilton à côté de l'ensemble du code source des missions Apollo"></p>
                         <aside class="notes">
                             <p>Pas de notes ...</p>
                         </aside>
@@ -435,6 +435,7 @@
                         <aside class="notes">
                             <p>Routines: ajouter/retirer un job, changer la priorité, changer le job en cours</p>
                             <p>Core set: 6 emplacements pour le CSM, 7 emplacements pour le LM</p>
+                            <p>Wait list: jobs programmés</p>
                         </aside>
                     </section>
                     <section>
@@ -445,8 +446,13 @@
                         </aside>
                     </section>
                     <section>
-                        <h3>Gestion interuptions IO</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                        <h3>Gestion des interruptions I/O</h3>
+                        <ul>
+                            <li>TIMER3 (scaled at 10ms) : WAITLIST task scheduler (scaled at</li>
+                            <li>TIMER4 (scaled at 10ms) : periodic checks (RCS, IMU, DAP, ...)</li>
+                            <li>TIMER5 (scaled at 100ms) : DAP</li>
+                            <li>TIMER6 (scaled at 0.0625ms) : timer for RCS jets</li>
+                        </ul>
                         <aside class="notes">
                             <p>Pas de notes ...</p>
                         </aside>
@@ -463,7 +469,7 @@
                             <li>...</li>
                         </ul>
                         <aside class="notes">
-                            <p>Pas de notes ...</p>
+                            <p>Opérations de trigonométrie coûteuses : SIN = 5.6ms; ACOS = 9.1ms</p>
                         </aside>
                     </section>
                     <section>
