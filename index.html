@@ -419,23 +419,32 @@
                     </section>
                     <section>
                         <h3>Multitâche coopératif</h3>
-                        <p class="fragment fade-up">Cooperative multiprogramming & Preemptive multiprogramming</p>
+                        <div class="fragment fade-up">
+                            <p>Cooperative multiprogramming</p>
+                            <p>&</p>
+                            <p>Preemptive multiprogramming</p>
+                        </div>
                         <aside class="notes">
                             <p>Problèmes complèxes et variés à résoudre, séparer des programmes est un enjeux majeur pour gérer la complexité et permettre une bonne testabilité.</p>
-                            <p>Rappel: un seul processeur mono-coeur, et mono-thread</p>
-                            <p>Cooperative multiprogramming: "je peux rendre la main"</p>
-                            <p>Preemptive multiprogramming: "ton temps est écoulé, rend la main"</p>
+                            <p>Rappel : un seul processeur mono-coeur, et mono-thread</p>
+                            <p>Cooperative multiprogramming : "je peux rendre la main"</p>
+                            <p>Preemptive multiprogramming : "ton temps est écoulé, rend la main"</p>
                         </aside>
                     </section>
                     <section>
                         <h3>Exécuteur : le "light OS" de l'AGC</h3>
-                        <p>Ensemble de routines pour manager les processus.</p>
-                        <p>Table des processus: Core Set table</p>
-                        <p><img class="h224" src="assets/images/corset.png" alt='Schéma explicatif du "core set"'></p>
+                        <p>Ensemble de routines manageant les processus.</p>
+                        <p>Espaces mémoires dédiés :</p>
+                        <ul>
+                            <li>Core Set table</li>
+                            <li>Wait list tables</li>
+                            <li>Vector Accumulator areas</li>
+                        </ul>
                         <aside class="notes">
-                            <p>Routines: ajouter/retirer un job, changer la priorité, changer le job en cours</p>
-                            <p>Core set: 6 emplacements pour le CSM, 7 emplacements pour le LM</p>
-                            <p>Wait list: jobs programmés</p>
+                            <p>Routines : ajouter/retirer un job, changer la priorité, changer le job en cours</p>
+                            <p>Core set : 6 emplacements pour le CSM, 7 emplacements pour le LM</p>
+                            <p>Wait list : jobs programmés</p>
+                            <p>Vector Accumulator areas : espace mémoire pour stocker l'état des jobs exécutés par l'Interpreteur</p>
                         </aside>
                     </section>
                     <section>
@@ -448,10 +457,10 @@
                     <section>
                         <h3>Gestion des interruptions I/O</h3>
                         <ul>
-                            <li>TIMER3 (scaled at 10ms) : WAITLIST task scheduler (scaled at</li>
+                            <li>TIMER3 (scaled at 10ms) : WAITLIST task scheduler</li>
                             <li>TIMER4 (scaled at 10ms) : periodic checks (RCS, IMU, DAP, ...)</li>
                             <li>TIMER5 (scaled at 100ms) : DAP</li>
-                            <li>TIMER6 (scaled at 0.0625ms) : timer for RCS jets</li>
+                            <li>TIMER6 (scaled at 0.625ms) : timer for RCS jets</li>
                         </ul>
                         <aside class="notes">
                             <p>Pas de notes ...</p>
@@ -459,22 +468,29 @@
                     </section>
                     <section>
                         <h3>Interpréteur : la "VM" de l'AGC</h3>
-                        <p>Une nouvelle architecture CPU "logicielle"</p>
-                        <p>Apporte des nouvelles capacités :</p> 
-                        <ul>
-                            <li>doubles & triple précisions</li>
-                            <li>vecteurs</li>
-                            <li>matrices</li>
-                            <li>trigonométrie</li>
-                            <li>...</li>
-                        </ul>
+                        <p class="fragment fade-up">Une nouvelle architecture CPU "logicielle"</p>
+                        <div class="fragment fade-up">
+                            <p>Apporte des nouvelles capacités :</p> 
+                            <ul>
+                                <li>doubles & triple précisions</li>
+                                <li>vecteurs</li>
+                                <li>matrices</li>
+                                <li>arithmétique</li>
+                                <li>trigonométrie</li>
+                                <li>...</li>
+                            </ul>
+                        </div>
                         <aside class="notes">
+                            <p>Jusqu'à maintenant, tout ce que l'on a évoqué est codé en assembleur</p>
+                            <p>Les programmes peuvent être un mix entre assembleur et interpreteur (usage optimisé des ressources)</p>
                             <p>Opérations de trigonométrie coûteuses : SIN = 5.6ms; ACOS = 9.1ms</p>
                         </aside>
                     </section>
                     <section>
-                        <h3>Langage de haut niveau</h3>
+                        <h3>Le langage de haut niveau</h3>
+                        <p><img class="h384" src="assets/images/high-level-langage.png" alt="Extrait du code source de l'AGC utilisant le langage de haut niveau de l'Interpreter"></p>
                         <aside class="notes">
+                            <p>Les premiers compilateurs existaient, mais le code compilé était peu optimisé</p>
                             <p>Pour l'AGC, pas de langage compilé, on code directement sur le langage intermédiaire</p>
                         </aside>
                     </section>
