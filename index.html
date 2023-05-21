@@ -414,7 +414,9 @@
                         <h2>Le système</h2>
                         <p><img class="h525" src="assets/images/margaret_hamilton5.jpg" alt="Margaret Hamilton à côté de l'ensemble du code source des missions Apollo"></p>
                         <aside class="notes">
-                            <p>Pas de notes ...</p>
+                            <p>Margaret Hamilton : directrice de l'équipe du MIT Draper Lab. Elle et son équipe ont développé le logiciel de l'AGC.</p>
+                            <p>Ils ont été soumis à de fortes contraintes : robustesse, fiabilité, performance, ...</p>
+                            <p>L'AGC est un ensemble de mécaniques simples qui associées produisent un comportement complexe/sofistiqué</p>
                         </aside>
                     </section>
                     <section>
@@ -434,7 +436,7 @@
                     <section>
                         <h3>Exécuteur : le "light OS" de l'AGC</h3>
                         <p>Ensemble de routines manageant les processus.</p>
-                        <p>Espaces mémoires dédiés :</p>
+                        <p>Des espaces de mémoire vive fixes et dédiés :</p>
                         <ul>
                             <li>Core Set table</li>
                             <li>Wait list tables</li>
@@ -443,7 +445,7 @@
                         <aside class="notes">
                             <p>Routines : ajouter/retirer un job, changer la priorité, changer le job en cours</p>
                             <p>Core set : 6 emplacements pour le CSM, 7 emplacements pour le LM</p>
-                            <p>Wait list : jobs programmés</p>
+                            <p>Wait list : jobs programmés, deux tables pour le temps avant exécution et l'adresse du job</p>
                             <p>Vector Accumulator areas : espace mémoire pour stocker l'état des jobs exécutés par l'Interpreteur</p>
                         </aside>
                     </section>
@@ -455,15 +457,26 @@
                         </aside>
                     </section>
                     <section>
-                        <h3>Gestion des interruptions I/O</h3>
+                        <h3>Le temps et les interruptions I/O synchrones</h3>
                         <ul>
-                            <li>TIMER3 (scaled at 10ms) : WAITLIST task scheduler</li>
-                            <li>TIMER4 (scaled at 10ms) : periodic checks (RCS, IMU, DAP, ...)</li>
-                            <li>TIMER5 (scaled at 100ms) : DAP</li>
-                            <li>TIMER6 (scaled at 0.625ms) : timer for RCS jets</li>
+                            <p>Le temps est un donnée critique dans une mission</p>
+                            <li>TIMER1 & 2 (scaled at 10ms) : elapsed time</li>
+
+                            <div class="fragment fade-up">
+                                <p>Interruptions avec context switch</p>
+                                <li>TIMER3 (scaled at 10ms) : WAITLIST task scheduler</li>
+                                <li>TIMER4 (scaled at 10ms) : periodic checks (RCS, IMU, DAP, ...)</li>
+                                <li>TIMER5 (scaled at 100ms) : DAP</li>
+                                <li>TIMER6 (scaled at 0.625ms) : timer for RCS jets</li>
+                            </div>
                         </ul>
                         <aside class="notes">
-                            <p>Pas de notes ...</p>
+                            <p>Temps donnée critique : on doit effectuer les manoeuvre à des points précis</p>
+                            <p>Grandes vitesses de déplacement (ex: 7.7km/s en orbite terrestre), précision nécessaire</p>
+                            <p>TIMER1 & 2 : temps écoulé sur la mission, 2 mots nécessaires pour éviter les overflow (environ 31 jours)</p>
+                            <p>Opérations I/O synchrones : les devices switchs un bit à 1 sur des "channels dédiés" pour se signaler puis attendent l'AGC</p>
+                            <p>Context switch : suspension du programme en cours et exécution d'une interupt routine</p>
+                            <p>TIMER4 : offset de 5ms avec TIMER3, 8 T4RUPT sur 960ms (4 opérations doublées)</p>
                         </aside>
                     </section>
                     <section>
