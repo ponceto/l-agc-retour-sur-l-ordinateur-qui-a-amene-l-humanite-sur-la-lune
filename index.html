@@ -480,6 +480,21 @@
                         </aside>
                     </section>
                     <section>
+                        <h3>Les compteurs</h3>
+                        <p>Les interactions I/O ne sont pas toutes synchrones</p>
+                        <p>Usage du "Cycle stealing" pour éviter le context switch</p>
+                        <p><img class="h384" src="assets/images/gimbalcolored.jpg" alt="Schéma explicatif des différents axes de mesure de l'IMU"></p>
+                        <aside class="notes">
+                            <p>Il ne s'agit pas ici du système à proprement parler</p>
+                            <p>Cetains devices comme l'IMU peuvent provoquer beaucoup d'I/O, exemple 1600 interruptions/seconde pour une accélération de 10G (sur un seul axe)</p>
+                            <p>
+                                "Pulses" envoyées par le hardware dans différents buffers du CPU.
+                                Quand un pulse est détecté, le CPU utilise son prochain cycle pour incrémenter/décrémenter le compteur impacté (cycle stealing).
+                                Le CPU reprend ensuite le programme en cours.
+                            </p>
+                        </aside>
+                    </section>
+                    <section>
                         <h3>Interpréteur : la "VM" de l'AGC</h3>
                         <p class="fragment fade-up">Une nouvelle architecture CPU "logicielle"</p>
                         <div class="fragment fade-up">
