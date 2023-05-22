@@ -94,3 +94,23 @@ table.about td {
 .color-youtube {
     color: #ff0000 !important;
 }
+
+.dsky-button {
+    background: #8cafbf;
+    color: #fafafa;
+    border-color: #a0c8d6;
+    border-style: outset;
+    border-width: 4px;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.dsky-digit {
+    background: #f92672;
+    color: #fafafa;
+    border-color: #f9659a;
+    border-style: outset;
+    border-width: 4px;
+    border-radius: 8px;
+    padding: 4px;
+}

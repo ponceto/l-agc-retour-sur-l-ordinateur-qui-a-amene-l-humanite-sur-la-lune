@@ -400,6 +400,14 @@
                         </aside>
                     </section>
                     <section>
+                        <h3>La mémoire morte</h3>
+                        <p>« The core rope memory »</p>
+                        <p><img class="h384" src="assets/images/core-rope-memory-building.jpg" alt="core-rope-memory"></p>
+                        <aside class="notes">
+                            <p>Pas de notes ...</p>
+                        </aside>
+                    </section>
+                    <section>
                         <h3>Le système d'entrées/sorties</h3>
                         <p>Communiquer avec le monde extérieur</p>
                         <p><img class="h384" src="assets/images/agc-io-system.png" alt="agc-io-system"></p>
@@ -460,7 +468,7 @@
                         <h3>Le temps et les interruptions I/O synchrones</h3>
                         <ul>
                             <p>Le temps est un donnée critique dans une mission</p>
-                            <li>TIMER1 & 2 (scaled at 10ms) : elapsed time</li>
+                            <li>TIMER1 &amp; 2 (scaled at 10ms) : elapsed time</li>
 
                             <div class="fragment fade-up">
                                 <p>Interruptions avec context switch</p>
@@ -473,7 +481,7 @@
                         <aside class="notes">
                             <p>Temps donnée critique : on doit effectuer les manoeuvre à des points précis</p>
                             <p>Grandes vitesses de déplacement (ex: 7.7km/s en orbite terrestre), précision nécessaire</p>
-                            <p>TIMER1 & 2 : temps écoulé sur la mission, 2 mots nécessaires pour éviter les overflow (environ 31 jours)</p>
+                            <p>TIMER1 &amp; 2 : temps écoulé sur la mission, 2 mots nécessaires pour éviter les overflow (environ 31 jours)</p>
                             <p>Opérations I/O synchrones : les devices switchs un bit à 1 sur des "channels dédiés" pour se signaler puis attendent l'AGC</p>
                             <p>Context switch : suspension du programme en cours et exécution d'une interupt routine</p>
                             <p>TIMER4 : offset de 5ms avec TIMER3, 8 T4RUPT sur 960ms (4 opérations doublées)</p>
@@ -560,34 +568,53 @@
                         <p>Programmes, verbes et noms</p>
                         <div class="r-stack">
                             <p class="fragment semi-fade-out"><img class="h512" src="assets/images/apollo-dsky.png" alt="DSKY"></p>
-                            <pre class="fragment fade-in-then-out">
-                            <code data-trim>
-                            DSKY syntax:
-
-                            ⮕ VERB digit digit NOUN digit digit ENTR
-
-                            or
-
-                            ⮕ VERB digit digit ENTR
-                            </code>
-                            </pre>
+                            <div  class="fragment fade-in-then-out">
+                                <h4>SHORT SYNTAX</h4>
+                                <p>
+                                    <span class="dsky-button">VERB</span>
+                                    <span class="dsky-digit">digit</span>
+                                    <span class="dsky-digit">digit</span>
+                                    <span class="dsky-button">ENTR</span>
+                                </p>
+                                <p>&nbsp;</p>
+                                <h4>FULL SYNTAX</h4>
+                                <p>
+                                    <span class="dsky-button">VERB</span>
+                                    <span class="dsky-digit">digit</span>
+                                    <span class="dsky-digit">digit</span>
+                                    <span class="dsky-button">NOUN</span>
+                                    <span class="dsky-digit">digit</span>
+                                    <span class="dsky-digit">digit</span>
+                                    <span class="dsky-button">ENTR</span>
+                                </p>
+                            </div>
                             <p class="fragment fade-in-then-out"><img class="h512" src="assets/images/dsky-programs.jpg" alt="DSKY programs"></p>
                             <p class="fragment fade-in-then-out"><img class="h512" src="assets/images/dsky-cheat-sheet.jpg" alt="DSKY cheat sheet"></p>
-                            <pre class="fragment fade-in-then-out">
-                            <code class="text" data-trim>
-                            LAMP TEST:
-
-                            ⮕ VERB 3 5 ENTR
-                            </code>
-                            </pre>
-                            <pre class="fragment fade-in-then-out">
-                            <code class="text" data-trim>
-                            MONITOR CURRENT TIME:
-
-                            ⮕ VERB 1 6 NOUN 3 6 ENTR
-                            </code>
-                            </pre>
+                            <p class="fragment fade-in-then-out">
+                                <span>LAMP TEST</span><br><br>
+                                <span class="dsky-button">VERB</span>
+                                <span class="dsky-digit">3</span>
+                                <span class="dsky-digit">5</span>
+                                <span class="dsky-button">ENTR</span>
+                            </p>
+                            <p class="fragment fade-in-then-out">
+                                <span>MONITOR CURRENT TIME</span><br><br>
+                                <span class="dsky-button">VERB</span>
+                                <span class="dsky-digit">1</span>
+                                <span class="dsky-digit">6</span>
+                                <span class="dsky-button">NOUN</span>
+                                <span class="dsky-digit">3</span>
+                                <span class="dsky-digit">6</span>
+                                <span class="dsky-button">ENTR</span>
+                            </p>
                         </div>
+                        <aside class="notes">
+                            <p>Pas de notes ...</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Le panneau de contrôle principal</h3>
+                        <p><img class="h512 fragment" src="assets/images/main-control-panel.png" alt="main control panel"></p>
                         <aside class="notes">
                             <p>Pas de notes ...</p>
                         </aside>
