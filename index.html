@@ -448,20 +448,13 @@
                         <ul>
                             <li>Core Set table</li>
                             <li>Wait list tables</li>
-                            <li>Vector Accumulator areas</li>
+                            <li>Vector Accumulator areas (VAC)</li>
                         </ul>
                         <aside class="notes">
                             <p>Routines : ajouter/retirer un job, changer la priorité, changer le job en cours</p>
-                            <p>Core set : 6 emplacements pour le CSM, 7 emplacements pour le LM</p>
+                            <p>Core set : processus en cours d'exécution, 6 emplacements pour le CSM, 7 emplacements pour le LM</p>
                             <p>Wait list : jobs programmés, deux tables pour le temps avant exécution et l'adresse du job</p>
                             <p>Vector Accumulator areas : espace mémoire pour stocker l'état des jobs exécutés par l'Interpreteur</p>
-                        </aside>
-                    </section>
-                    <section>
-                        <h3>Gestion des erreurs</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
-                        <aside class="notes">
-                            <p>Pas de notes ...</p>
                         </aside>
                     </section>
                     <section>
@@ -488,7 +481,7 @@
                         </aside>
                     </section>
                     <section>
-                        <h3>Les compteurs</h3>
+                        <h3>Aparté : Les compteurs</h3>
                         <p>Les interactions I/O ne sont pas toutes synchrones</p>
                         <p>Usage du "Cycle stealing" pour éviter le context switch</p>
                         <p><img class="h384" src="assets/images/gimbalcolored.jpg" alt="Schéma explicatif des différents axes de mesure de l'IMU"></p>
@@ -500,6 +493,45 @@
                                 Quand un pulse est détecté, le CPU utilise son prochain cycle pour incrémenter/décrémenter le compteur impacté (cycle stealing).
                                 Le CPU reprend ensuite le programme en cours.
                             </p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Gestion des erreurs</h3>
+                        <p>Certains processus peuvent :</p>
+                        <ul>
+                            <li>être redémarrés</li>
+                            <li>changer leurs paramètres de redémarrage</li>
+                        </ul>
+                        <aside class="notes">
+                            <p>Tous les processus ne nécessitent pas d'être redémarrés. Exemple : le DAP est trigger toutes les 100ms par le T5RUPT et sera donc relancé.</p>
+                            <p>Certains processus peuvent être réexécutés complètement sans grand impact sur les performances globales de l'AGC.</p>
+                            <p>D'autres contiennent des computations longues, et stockent des états intermédiaires pour éviter de tout réexécuter.</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Gestion des erreurs</h3>
+                        <p>Logique de redémarrage :</p>
+                        <ul>
+                            <li>Group table & Restart table (fixed memory)</li>
+                            <li>Phase table (erasable memory)</li>
+                        </ul>
+                        <aside class="notes">
+                            <p>Restart table : table contenant toute les logique de redémarrage des jobs. Sur la fixed memory pour éviter les corruptions mémoire.</p>
+                            <p>Phase table : 1) contient les paramètres pour restart; 2) contient le major mode de l'AGC</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Gestion des erreurs</h3>
+                        <p>Trois modes :</p>
+                        <ul>
+                            <li>Program abort: P00DOO</li>
+                            <li>Program abort: software restarts</li>
+                            <li>Rebooting: AGC "fresh start"</li>
+                        </ul>
+                        <aside class="notes">
+                            <p>P00DOO : fin immédiate du programme sans redémarrage</p>
+                            <p>software restarts : les programmes sont interrompus, les core set, waitlist et VAC sont nettoyés et les jobs sont relancés/schedulé. La mémoire vive est préalablement vérifier pour ne pas charger des données corrompues.</p>
+                            <p>Rebooting : nettoyage sans redémarrage, reset du hardware, IMU compris; L'AGC est placé dans un état "Idle"</p>
                         </aside>
                     </section>
                     <section>
