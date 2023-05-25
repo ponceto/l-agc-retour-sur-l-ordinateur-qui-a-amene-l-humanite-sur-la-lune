@@ -459,18 +459,23 @@
                     </section>
                     <section>
                         <h3>Le temps et les interruptions I/O synchrones</h3>
-                        <ul>
-                            <p>Le temps est un donnée critique dans une mission</p>
-                            <li>TIMER1 &amp; 2 (scaled at 10ms) : elapsed time</li>
-
-                            <div class="fragment fade-up">
-                                <p>Interruptions avec context switch</p>
-                                <li>TIMER3 (scaled at 10ms) : WAITLIST task scheduler</li>
-                                <li>TIMER4 (scaled at 10ms) : periodic checks (RCS, IMU, DAP, ...)</li>
-                                <li>TIMER5 (scaled at 100ms) : DAP</li>
-                                <li>TIMER6 (scaled at 0.625ms) : timer for RCS jets</li>
+                        <div class="r-stack">
+                            <div class="fragment fade-in-then-out">
+                                <p>Le temps est un donnée critique dans une mission</p>
+                                <ul>
+                                    <li>TIMER1 &amp; 2 (scaled at 10ms) : elapsed time</li>    
+                                </ul>
                             </div>
-                        </ul>
+                            <div class="fragment fade-in-then-out">
+                                <p>Interruptions avec context switch</p>
+                                <ul>
+                                    <li>TIMER3 (scaled at 10ms) : WAITLIST task scheduler</li>
+                                    <li>TIMER4 (scaled at 10ms) : periodic checks (RCS, IMU, DAP, ...)</li>
+                                    <li>TIMER5 (scaled at 100ms) : DAP</li>
+                                    <li>TIMER6 (scaled at 0.625ms) : timer for RCS jets</li>
+                                </ul>
+                            </div>
+                        </div>
                         <aside class="notes">
                             <p>Temps donnée critique : on doit effectuer les manoeuvre à des points précis</p>
                             <p>Grandes vitesses de déplacement (ex: 7.7km/s en orbite terrestre), précision nécessaire</p>
@@ -497,38 +502,44 @@
                     </section>
                     <section>
                         <h3>Gestion des erreurs</h3>
-                        <p>Certains processus peuvent :</p>
-                        <ul>
-                            <li>être redémarrés</li>
-                            <li>changer leurs paramètres de redémarrage</li>
-                        </ul>
+                        <div class="r-stack">
+                            <div class="fragment fade-in-then-out">
+                                <p>Certains processus peuvent :</p>
+                                <ul>
+                                    <li>être redémarrés</li>
+                                    <li>changer leurs paramètres de redémarrage</li>
+                                </ul>
+                            </div>
+
+                            <div class="fragment fade-in-then-out"> 
+                                <p>Logique de redémarrage :</p>
+                                <ul>
+                                    <li>Group table & Restart table (fixed memory)</li>
+                                    <li>Phase table (erasable memory)</li>
+                                </ul>
+                            </div>
+
+                            <div class="fragment fade-in-then-out"> 
+                                <p>Trois modes :</p>
+                                <ul>
+                                    <li>Program abort: P00DOO</li>
+                                    <li>Program abort: software restarts</li>
+                                    <li>Rebooting: AGC "fresh start"</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
                         <aside class="notes">
+                            <h3>1.</h3>
                             <p>Tous les processus ne nécessitent pas d'être redémarrés. Exemple : le DAP est trigger toutes les 100ms par le T5RUPT et sera donc relancé.</p>
                             <p>Certains processus peuvent être réexécutés complètement sans grand impact sur les performances globales de l'AGC.</p>
                             <p>D'autres contiennent des computations longues, et stockent des états intermédiaires pour éviter de tout réexécuter.</p>
-                        </aside>
-                    </section>
-                    <section>
-                        <h3>Gestion des erreurs</h3>
-                        <p>Logique de redémarrage :</p>
-                        <ul>
-                            <li>Group table & Restart table (fixed memory)</li>
-                            <li>Phase table (erasable memory)</li>
-                        </ul>
-                        <aside class="notes">
+
+                            <h3>2.</h3>
                             <p>Restart table : table contenant toute les logique de redémarrage des jobs. Sur la fixed memory pour éviter les corruptions mémoire.</p>
                             <p>Phase table : 1) contient les paramètres pour restart; 2) contient le major mode de l'AGC</p>
-                        </aside>
-                    </section>
-                    <section>
-                        <h3>Gestion des erreurs</h3>
-                        <p>Trois modes :</p>
-                        <ul>
-                            <li>Program abort: P00DOO</li>
-                            <li>Program abort: software restarts</li>
-                            <li>Rebooting: AGC "fresh start"</li>
-                        </ul>
-                        <aside class="notes">
+
+                            <h3>3</h3>
                             <p>P00DOO : fin immédiate du programme sans redémarrage</p>
                             <p>software restarts : les programmes sont interrompus, les core set, waitlist et VAC sont nettoyés et les jobs sont relancés/schedulé. La mémoire vive est préalablement vérifier pour ne pas charger des données corrompues.</p>
                             <p>Rebooting : nettoyage sans redémarrage, reset du hardware, IMU compris; L'AGC est placé dans un état "Idle"</p>
