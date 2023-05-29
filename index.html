@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="vendor/reveal.js/plugin/highlight/monokai.css">
         <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="vendor/custom/css/custom.css">
-        <script id="MathJax-script" async src="vendor/custom/js/mathjax.tex-mml-chtml.js"></script>
     </head>
     <body>
         <div class="reveal">
@@ -1016,6 +1015,7 @@
         <script src="vendor/reveal.js/plugin/search/search.js"></script>
         <script src="vendor/reveal.js/plugin/markdown/markdown.js"></script>
         <script src="vendor/reveal.js/plugin/highlight/highlight.js"></script>
+        <script src="vendor/reveal.js/plugin/math/math.js"></script>
         <script src="vendor/custom/js/custom.js"></script>
         <script>
             Reveal.initialize({
@@ -1025,7 +1025,7 @@
                 progress: true,
                 center: true,
                 hash: true,
-                plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+                plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath.MathJax3 ]
             });
         </script>
     </body>
