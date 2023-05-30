@@ -96,7 +96,8 @@
                         <p>Création de la NASA.</p>
                         <p><img class="h256" src="assets/images/nasa-worm.png" alt="Logo Nasa worm"></p>
                         <aside class="notes">
-                            <p>29 juillet 1958 : Création de la NASA.</p>
+                            <p>29 juillet 1958 : Création de la NASA pour gérer les projets d'astronautique civile.</p>
+                            <p>Avant : les recherches en astronautique étaient assurés par les différentes branches de l'armée, la NACA elle était concentrée sur l'aéronautique.</p>
                         </aside>
                     </section>
                     <section>
@@ -244,7 +245,7 @@
                     </section>
                     <section>
                         <h3>La liaison avec le sol et la télémétrie</h3>
-                        <p><img class="h384" src="assets/images/mission-control.jpg" alt="Photographie du centre de contrêle"></p>
+                        <p><img class="h384" src="assets/images/mission-control.jpg" alt="Photographie du centre de contrôle"></p>
                         <aside class="notes">
                             Consistait essentiellement à envoyer des snapshot de la RAM.<br>
                             Réception de commandes reçues du sol (nécessitaient validation de l'équipage).
@@ -287,7 +288,9 @@
                             <img class="h384 fragment" src="assets/images/numworks-greater-than-agc.png" alt="numworks-greater-than-agc">
                         </p>
                         <aside class="notes">
-                            <p>Pas de notes ...</p>
+                            <p>CPU AGC : 2.048 MHz</p>
+                            <p>CPU 3310 : 13 MHz</p>
+                            <p>CPU Numworks : 216 MHz</p>
                         </aside>
                     </section>
                     <section>
@@ -536,7 +539,7 @@
 
                             <h3>2.</h3>
                             <p>Restart table : table contenant toute les logique de redémarrage des jobs. Sur la fixed memory pour éviter les corruptions mémoire.</p>
-                            <p>Phase table : 1) contient les paramètres pour restart; 2) contient le major mode de l'AGC</p>
+                            <p>Phase table : 1) contient les paramètres pour restart; 2) contient le major mode de l'AGC (MODREG)</p>
 
                             <h3>3</h3>
                             <p>P00DOO : fin immédiate du programme sans redémarrage</p>
@@ -801,10 +804,96 @@
                         </aside>
                     </section>
                     <section>
-                        <h3>Apollo 14</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                        <h3>Apollo 14 : "We need to look at a bit here."</h3>
+                        <pre>
+105:10:00 - Haise (CAPCOM): "Okay, Antares; Houston. We'd like you to back out of that 52. 
+                                We need to look at a bit here."
+105:10:10 - Mitchell:       "Roger. Do you have some PADs ready for me this pass, Fred?"
+105:10:18 - Haise (CAPCOM): "Okay. They're coming up in a minute, Ed. 
+                                You ready to copy a couple of steps here?"
+105:10:28 - Mitchell:       "Yes. Go ahead."
+105:10:29 - Haise (CAPCOM): "Okay. We'd like a Verb 11 Noun 10 Enter, 30 Enter."
+105:10:40 - Mitchell:       "You got it."
+105:11:00 - Mitchell:       "You read the DSKY, Houston?"
+105:11:05 - Haise (CAPCOM): "Antares, Houston. What we're looking at there is the abort bit, 
+                                and it looks set."
+                        </pre>
                         <aside class="notes">
-                            <p>Pas de notes ...</p>
+                            <p>Le LM est séparé du CSM, en orbite lunaire à H-4 avant l'alunissage.</p>
+                            <p>L'équipe au sol à analysé les données de l'AGC, le bit du bouton Abort est set.</p>
+                            <p>Après plusieurs manipulations, il est constaté que le problème est intermittent.</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Apollo 14 : "We need to look at a bit here."</h3>
+                        <div class="r-stack">
+                            <div class="fragment fade-in-then-out">
+                                <ul>
+                                    <li>Routine 11 (toutes les 0.25s)</li>
+                                    <li>LETABORT bit</li>
+                                    <li>P63 & BURNBABY</li>
+                                    <li>P70 & P71</li>
+                                    <li>MODREG</li>
+                                </ul>
+                            </div>
+                            <div class="fragment fade-in-then-out">
+                                <p>Séquence normale</p>
+                                <img class="h525" src="assets/images/apollo14-sequence-normal.png" >
+                                <!-- 
+                                    <pre class="mermaid">
+sequenceDiagram
+    actor Astronaut
+    Astronaut-)P63: Start
+    P63-)MODREG: Set Major mode 63
+    note right of P63: About 15 minutes later : BURNBABY
+    P63-)LETABORT bit: Set bit
+    Routine 11->>+I/O: Is abort pressed?
+    I/O->>-Routine 11: Yes
+    Routine 11->>+LETABORT bit: Is bit set?
+    LETABORT bit->>-Routine 11: Yes
+    Routine 11->>+MODREG: Is abort already running?
+    note right of MODREG: Major mode 71 or 70
+    MODREG->>-Routine 11: No
+    Routine 11-)P63: Stop and start P71
+                              </pre> -->
+                            </div>
+                            
+                            <div class="fragment fade-in-then-out">
+                                <p>Le hack</p>
+                                <img class="h525" src="assets/images/apollo14-sequence-hack.png" >
+                                <!-- 
+                                    Trick sequence
+                                    <pre class="mermaid">
+sequenceDiagram
+    actor Astronaut
+    Astronaut-)P63: Start
+    P63-)MODREG: Set Major mode 63
+    Astronaut-)MODREG: Set Major mode 71
+    note right of P63: About 15 minutes later : BURNBABY
+    P63-)LETABORT bit: Set bit
+    Routine 11->>+I/O: Is abort pressed?
+    I/O->>-Routine 11: Yes
+    Routine 11->>+LETABORT bit: Is bit set?
+    LETABORT bit->>-Routine 11: Yes
+    Routine 11->>+MODREG: Is abort already running?
+    note right of MODREG: Major mode 71 or 70
+    MODREG->>-Routine 11: Yes
+    P63-)LETABORT bit: Unset bit
+    Routine 11->>+I/O: Is abort pressed?
+    I/O->>-Routine 11: Yes
+    Routine 11->>+LETABORT bit: Is bit set?
+    LETABORT bit->>-Routine 11: No
+    Astronaut-)MODREG: Set Major mode 63
+                              </pre> -->
+                            </div>
+                        </div>
+                        <aside class="notes">
+                            <p>Routine 11 - vérifie toutes les 0.25s si le bouton abort est appuyé</p>
+                            <p>LETABORT bit - bit permettant d'inhiber le bouton abort</p>
+                            <p>P63 - premier des 3 programmes de l'alunissage, gère l'allumage du moteur, gestion des gimbals et throttle up pour le braking phase</p>
+                            <p>BURNBABY - routine de démarrage du moteur, set le LETABORT bit</p>
+                            <p>P70 & P71 - programmes exécuté en cas d'abort</p>
+                            <p>MODREG (phase table) - contient le major mode en cours d'exécution (pas corrélé au mode réellement exécuté)</p>
                         </aside>
                     </section>
                 </section>
