@@ -54,6 +54,18 @@ img.h525 {
     height: 525px;
 }
 
+img.rounded-16 {
+    border-radius: 16px;
+}
+
+img.rounded-24 {
+    border-radius: 24px;
+}
+
+img.rounded-32 {
+    border-radius: 32px;
+}
+
 table.about {
     border: none;
     font-family: monospace;
@@ -113,4 +125,32 @@ table.about td {
     border-width: 4px;
     border-radius: 8px;
     padding: 4px;
+}
+
+.fragment.high-fade-out {
+    opacity: 1.0 !important;
+    visibility: inherit !important;
+}
+
+.fragment.high-fade-out.visible {
+    opacity: 0.1 !important;
+    visibility: inherit !important;
+}
+
+.fragment.blur {
+    filter: blur(75px);
+}
+
+.fragment.blur.visible {
+    filter: none;
+}
+
+.fragment.blur-out.visible {
+    filter: blur(16px) !important;
+    visibility: inherit !important;
+}
+
+.fragment.blur-out.visible.current-fragment {
+    filter: none !important;
+    visibility: inherit !important;
 }

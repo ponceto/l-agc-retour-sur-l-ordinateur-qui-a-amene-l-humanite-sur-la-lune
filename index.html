@@ -70,16 +70,15 @@
                 <section data-background="assets/images/background-1.jpg" data-transition="slide">
                     <section>
                         <h2>Le contexte</h2>
-                        <p><img class="h384" src="assets/images/saturn-v.png" alt="Saturn V"></p>
+                        <p><img class="h512 rounded-24" src="assets/images/saturn-v.png" alt="Saturn V"></p>
                     </section>
                     <section>
                         <h3>25 mai 1961</h3>
                         <p>Discours de J.F Kennedy devant le congrès Américain</p>
                         <div class="r-stack">
-                            <img class="fragment fade-in-then-out h512" src="assets/images/jfk-speech.jpg" alt="John F. Kennedy lors de son speech devant le Congrès Américain">
-                            <div class="r-stack fragment fade-in-then-out">
-                                <img class="h512" style="opacity: 0.5; filter: blur(8px);" src="assets/images/jfk-speech.jpg" alt="John F. Kennedy lors de son speech devant le Congrès Américain">
-                                <p style="z-index: 3;">« [...] I believe that this nation should commit itself to achieving the goal, before this decade is out, of landing a man on the Moon and returning him safely to the Earth. [...] »</p>
+                            <div class="r-stack">
+                                <p class="fragment blur-out"><img class="h512 rounded-32" src="assets/images/jfk-speech.jpg" alt="John F. Kennedy lors de son speech devant le Congrès Américain"></p>
+                                <p class="fragment">« [...] I believe that this nation should commit itself to achieving the goal, before this decade is out, of landing a man on the Moon and returning him safely to the Earth. [...] »</p>
                             </div>
                         </div>
                         <aside class="notes">
@@ -177,7 +176,7 @@
                 <section data-background="assets/images/background-1.jpg" data-transition="slide">
                     <section>
                         <h2>C'est quoi l'AGC ?</h2>
-                        <p><img class="h512" src="assets/images/what-is-agc.jpg" alt="Image concept d'époque montrant le module de commande en orbite lunaire, moteur allumé"></p>
+                        <p><img class="h512 rounded-24" src="assets/images/what-is-agc.jpg" alt="Image concept d'époque montrant le module de commande en orbite lunaire, moteur allumé"></p>
                     </section>
                     <section>
                         <h3>Déroulé d'une mission</h3>
@@ -266,7 +265,7 @@
                 <section data-background="assets/images/background-1.jpg" data-transition="slide">
                     <section>
                         <h2>Le hardware</h2>
-                        <p><img class="h512" src="assets/images/hardware.jpg" alt="Premier étage de la Saturn V d'Apollo 11 dans le Vehicule Assembly Building"></p>
+                        <p><img class="h512 rounded-24" src="assets/images/hardware.jpg" alt="Premier étage de la Saturn V d'Apollo 11 dans le Vehicule Assembly Building"></p>
                         <aside class="notes">
                             <p>Pas de notes ...</p>
                         </aside>
@@ -432,7 +431,7 @@
                 <section data-background="assets/images/background-1.jpg" data-transition="slide">
                     <section>
                         <h2>Le système</h2>
-                        <p><img class="h525" src="assets/images/margaret_hamilton5.jpg" alt="Margaret Hamilton à côté de l'ensemble du code source des missions Apollo"></p>
+                        <p><img class="h512 rounded-24" src="assets/images/margaret_hamilton5.jpg" alt="Margaret Hamilton à côté de l'ensemble du code source des missions Apollo"></p>
                         <aside class="notes">
                             <p>Margaret Hamilton : directrice de l'équipe du MIT Draper Lab. Elle et son équipe ont développé le logiciel de l'AGC.</p>
                             <p>Ils ont été soumis à de fortes contraintes : robustesse, fiabilité, performance, ...</p>
@@ -599,7 +598,7 @@
                 <section data-background="assets/images/background-1.jpg" data-transition="slide">
                     <section>
                         <h2>Le software</h2>
-                        <p><img class="h512" src="assets/images/software.jpg" alt="L'équipage d'Apollo 9 à l'entrainement dans le simulateur du module lunaire."></p>
+                        <p><img class="h512 rounded-24" src="assets/images/software.jpg" alt="L'équipage d'Apollo 9 à l'entrainement dans le simulateur du module lunaire."></p>
                         <aside class="notes">
                             <p>Pas de notes ...</p>
                         </aside>
@@ -768,8 +767,8 @@
                     <section>
                         <h3>Surcharge de travail</h3>
                         <div class="r-stack">
-                            <p><img class="fragment fade-in-then-out h512" style="border-radius: 32px;" src="assets/images/master-alarm.jpg" alt="master alarm"></p>
-                            <p><img class="fragment h512" style="border-radius: 32px;" src="assets/images/master-alarm-2.png" alt="master alarm"></p>
+                            <p><img class="h512 rounded-32 fragment fade-in-then-out" src="assets/images/master-alarm.jpg" alt="master alarm"></p>
+                            <p><img class="h512 rounded-32 fragment" src="assets/images/master-alarm-2.png" alt="master alarm"></p>
                         </div>
                         <aside class="notes">
                             <p>Caution and Warning section, identifies the alarm tone as "a square wave that is alternately 750 cps and 2000 cps, changing at a rate of 2.5 times a second"</p>
@@ -779,7 +778,7 @@
                 <section data-background="assets/images/background-1.jpg" data-transition="slide">
                     <section>
                         <h2>Les incidents notables</h2>
-                        <p><img class="h512" src="assets/images/incidents.jpg" alt="Le module lunaire (étage d'ascension uniquement) d'Apollo 11 photographié depuis le module de commande"></p>
+                        <p><img class="h512 rounded-24" src="assets/images/incidents.jpg" alt="Le module lunaire (étage d'ascension uniquement) d'Apollo 11 photographié depuis le module de commande"></p>
                         <aside class="notes">
                             <p>Pas de notes ...</p>
                         </aside>
@@ -848,53 +847,12 @@
                             </div>
                             <div class="fragment fade-in-then-out">
                                 <p>Séquence normale</p>
-                                <img class="h525" src="assets/images/apollo14-sequence-normal.png" >
-                                <!-- 
-                                    <pre class="mermaid">
-sequenceDiagram
-    actor Astronaut
-    Astronaut-)P63: Start
-    P63-)MODREG: Set Major mode 63
-    note right of P63: About 15 minutes later : BURNBABY
-    P63-)LETABORT bit: Set bit
-    Routine 11->>+I/O: Is abort pressed?
-    I/O->>-Routine 11: Yes
-    Routine 11->>+LETABORT bit: Is bit set?
-    LETABORT bit->>-Routine 11: Yes
-    Routine 11->>+MODREG: Is abort already running?
-    note right of MODREG: Major mode 71 or 70
-    MODREG->>-Routine 11: No
-    Routine 11-)P63: Stop and start P71
-                              </pre> -->
+                                <img class="h525" src="assets/images/apollo14-sequence-normal.png" alt="apollo14-sequence-normal">
                             </div>
                             
                             <div class="fragment fade-in-then-out">
                                 <p>Le hack</p>
-                                <img class="h525" src="assets/images/apollo14-sequence-hack.png" >
-                                <!-- 
-                                    Trick sequence
-                                    <pre class="mermaid">
-sequenceDiagram
-    actor Astronaut
-    Astronaut-)P63: Start
-    P63-)MODREG: Set Major mode 63
-    Astronaut-)MODREG: Set Major mode 71
-    note right of P63: About 15 minutes later : BURNBABY
-    P63-)LETABORT bit: Set bit
-    Routine 11->>+I/O: Is abort pressed?
-    I/O->>-Routine 11: Yes
-    Routine 11->>+LETABORT bit: Is bit set?
-    LETABORT bit->>-Routine 11: Yes
-    Routine 11->>+MODREG: Is abort already running?
-    note right of MODREG: Major mode 71 or 70
-    MODREG->>-Routine 11: Yes
-    P63-)LETABORT bit: Unset bit
-    Routine 11->>+I/O: Is abort pressed?
-    I/O->>-Routine 11: Yes
-    Routine 11->>+LETABORT bit: Is bit set?
-    LETABORT bit->>-Routine 11: No
-    Astronaut-)MODREG: Set Major mode 63
-                              </pre> -->
+                                <img class="h525" src="assets/images/apollo14-sequence-hack.png" alt="apollo14-sequence-hack">
                             </div>
                         </div>
                         <aside class="notes">
@@ -910,29 +868,7 @@ sequenceDiagram
                 <section data-background="assets/images/background-1.jpg" data-transition="slide">
                     <section>
                         <h2>L'héritage du programme Apollo</h2>
-                        <p><img class="h512" src="assets/images/moon-foot-step.jpg" alt="Emprunte de la botte de Buzz Aldrin prise à la surface de la lune"></p>
-                        <aside class="notes">
-                            <p>Pas de notes ...</p>
-                        </aside>
-                    </section>
-                    <section>
-                        <h3>Découvertes et évolutions<br>technologiques</h3>
-                        <div class="r-stack">
-                            <p><img class="fragment semi-fade-out h384" src="assets/images/apollo-program.png" alt="Apollo Program"></p>
-                            <div>
-                                <ul style="width:100%;">
-                                    <li class="fragment">Les circuits intégrés</li>
-                                    <li class="fragment">L'informatique embarquée</li>
-                                    <li class="fragment">La programmation temps réel</li>
-                                </ul>
-                                <p class="fragment" style="width:100%;">Mais aussi :</p>
-                                <ul style="width:100%;">
-                                    <li class="fragment">La nourriture lyophilisée</li>
-                                    <li class="fragment">Les couches pour bébés</li>
-                                    <li class="fragment">...</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <p><img class="h512 rounded-24" src="assets/images/moon-foot-step.jpg" alt="Emprunte de la botte de Buzz Aldrin prise à la surface de la lune"></p>
                         <aside class="notes">
                             <p>Pas de notes ...</p>
                         </aside>
@@ -941,7 +877,7 @@ sequenceDiagram
                         <h3>A quoi cela nous sert aujourd'hui ?</h3>
                         <p class="fragment">Les retombées ont été immenses dans de nombreux domaines :</p>
                         <div class="r-stack">
-                            <p><img class="fragment semi-fade-out h384" src="assets/images/apollo-program.png" alt="Apollo Program"></p>
+                            <p><img class="h512 fragment high-fade-out" src="assets/images/apollo-program.png" alt="Apollo Program"></p>
                             <ul>
                                 <li class="fragment">La micro-électronique</li>
                                 <li class="fragment">Les télécommunications</li>
@@ -957,9 +893,31 @@ sequenceDiagram
                         </aside>
                     </section>
                     <section>
+                        <h3>Découvertes et évolutions<br>technologiques</h3>
+                        <div class="r-stack">
+                            <p><img class="h512 fragment high-fade-out" src="assets/images/apollo-program.png" alt="Apollo Program"></p>
+                            <div>
+                                <ul style="width: 100%;">
+                                    <li class="fragment">Les circuits intégrés</li>
+                                    <li class="fragment">L'informatique embarquée</li>
+                                    <li class="fragment">La programmation temps réel</li>
+                                </ul>
+                                <p class="fragment" style="width: 100%; color: red;">**MAIS AUSSI**</p>
+                                <ul style="width: 100%;">
+                                    <li class="fragment">La nourriture lyophilisée</li>
+                                    <li class="fragment">Les couches pour bébés</li>
+                                    <li class="fragment">...</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <aside class="notes">
+                            <p>Pas de notes ...</p>
+                        </aside>
+                    </section>
+                    <section>
                         <h3>L'ingéniérie matérielle</h3>
                         <div class="r-stack">
-                            <p><img class="fragment fade-in-then-semi-out h384" src="assets/images/fairchild-4500a.jpg" alt="Fairchild 4500a"></p>
+                            <p><img class="h512 fragment high-fade-out" src="assets/images/fairchild-4500a.jpg" alt="Fairchild 4500a"></p>
                             <ul>
                                 <li class="fragment">Procédés de fabrication des circuits électroniques</li>
                                 <li class="fragment">Durcicement aux radiations</li>
@@ -977,7 +935,7 @@ sequenceDiagram
                     <section>
                         <h3>L'ingéniérie logicielle</h3>
                         <div class="r-stack">
-                            <p><img class="fragment fade-in-then-semi-out h384" src="assets/images/agc-source-code.jpg" alt="AGC source code"></p>
+                            <p><img class="h512 fragment high-fade-out" src="assets/images/agc-source-code.jpg" alt="AGC source code"></p>
                             <ul>
                                 <li class="fragment">Un domaine bien disctinct des mathématiques</li>
                                 <li class="fragment">Une approche rigoureuse du développement</li>
@@ -995,7 +953,7 @@ sequenceDiagram
                 <section data-background="assets/images/background-1.jpg" data-transition="slide">
                     <section>
                         <h2>Conclusion</h2>
-                        <p><img class="h512" src="assets/images/conclusion.jpg" alt="Un astronaute d'Apollo 16 saluant à côté du drapeau Américain, en arrière plan le module et le rover lunaires"></p>
+                        <p><img class="h512 rounded-24" src="assets/images/conclusion.jpg" alt="Un astronaute d'Apollo 16 saluant à côté du drapeau Américain, en arrière plan le module et le rover lunaires"></p>
                         <aside class="notes">
                             <p>Cette aventure est le fruit d'un contexte historique et technologique propices.</p>
                             <p>L'informatique a permit de réaliser ces missions</p>
@@ -1007,7 +965,7 @@ sequenceDiagram
                 <section data-background="assets/images/background-1.jpg"  data-transition="zoom">
                     <section>
                         <h2>Références</h2>
-                        <p><img class="h384" src="assets/images/eagle.png" alt="Eagle"></p>
+                        <p><img class="h512 rounded-24" src="assets/images/eagle.png" alt="Eagle"></p>
                         <aside class="notes">
                             <p>Pas de notes ...</p>
                         </aside>
@@ -1125,7 +1083,7 @@ sequenceDiagram
                 </section>
                 <section data-background="assets/images/background-0.jpg"  data-transition="zoom">
                     <h2>Des questions ?</h2>
-                    <p><img class="h512" src="assets/images/questions.jpg" alt="L'équipage d'Apollo 12 lors de sa conférence de presse post-mission"></p>
+                    <p><img class="h512 rounded-24" src="assets/images/questions.jpg" alt="L'équipage d'Apollo 12 lors de sa conférence de presse post-mission"></p>
                     <aside class="notes">
                         <p>Pas de notes ...</p>
                     </aside>
@@ -1133,7 +1091,7 @@ sequenceDiagram
                 <section data-background="assets/images/background-0.jpg"  data-transition="zoom">
                     <h3>Les slides</h3>
                     <p><a href="https://bit.ly/3oI3gpj">https://bit.ly/3oI3gpj</a></p>
-                    <p><img class="h384" src="assets/images/qrcode-slides.png" alt="qrcode"></p>
+                    <p><img class="h384 rounded-24" src="assets/images/qrcode-slides.png" alt="qrcode"></p>
                 </section>
             </div>
         </div>
