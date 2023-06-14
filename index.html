@@ -439,7 +439,7 @@
                         </aside>
                     </section>
                     <section>
-                        <h3>Multitâche coopératif</h3>
+                        <h3>Le mutliprocessing</h3>
                         <div class="fragment fade-up">
                             <p>Cooperative multiprogramming</p>
                             <p>&amp;</p>
@@ -458,34 +458,26 @@
                         <p>Des espaces de mémoire vive fixes et dédiés :</p>
                         <ul>
                             <li>Core Set table</li>
-                            <li>Wait list tables</li>
                             <li>Vector Accumulator areas (VAC)</li>
+                            <li>Wait list tables</li>
                         </ul>
                         <aside class="notes">
                             <p>Routines : ajouter/retirer un job, changer la priorité, changer le job en cours</p>
                             <p>Core set : processus en cours d'exécution, 6 emplacements pour le CSM, 7 emplacements pour le LM</p>
-                            <p>Wait list : jobs programmés, deux tables pour le temps avant exécution et l'adresse du job</p>
                             <p>Vector Accumulator areas : espace mémoire pour stocker l'état des jobs exécutés par l'Interpreteur</p>
+                            <p>Wait list : jobs programmés, deux tables pour le temps avant exécution et l'adresse du job</p>
                         </aside>
                     </section>
                     <section>
-                        <h3>Le temps et les interruptions I/O synchrones</h3>
-                        <div class="r-stack">
-                            <div class="fragment fade-in-then-out">
-                                <p>Le temps est un donnée critique dans une mission</p>
-                                <ul>
-                                    <li>TIMER1 &amp; 2 (scaled at 10ms) : elapsed time</li>    
-                                </ul>
-                            </div>
-                            <div class="fragment fade-in-then-out">
-                                <p>Interruptions avec context switch</p>
-                                <ul>
-                                    <li>TIMER3 (scaled at 10ms) : WAITLIST task scheduler</li>
-                                    <li>TIMER4 (scaled at 10ms) : periodic checks (RCS, IMU, DAP, ...)</li>
-                                    <li>TIMER5 (scaled at 100ms) : DAP</li>
-                                    <li>TIMER6 (scaled at 0.625ms) : timer for RCS jets</li>
-                                </ul>
-                            </div>
+                        <h3>Exécuteur : Le temps et les interruptions I/O synchrones</h3>
+                        <div>
+                            <p>Interruptions avec context switch</p>
+                            <ul>
+                                <li>TIMER3 (scaled at 10ms) : WAITLIST task scheduler</li>
+                                <li>TIMER4 (scaled at 10ms) : periodic checks (RCS, IMU, DAP, ...)</li>
+                                <li>TIMER5 (scaled at 100ms) : DAP</li>
+                                <li>TIMER6 (scaled at 0.625ms) : timer for RCS jets</li>
+                            </ul>
                         </div>
                         <aside class="notes">
                             <p>Temps donnée critique : on doit effectuer les manoeuvre à des points précis</p>
@@ -512,7 +504,7 @@
                         </aside>
                     </section>
                     <section>
-                        <h3>Gestion des erreurs</h3>
+                        <h3>Exécuteur : Gestion des erreurs</h3>
                         <div class="r-stack">
                             <div class="fragment fade-in-then-out">
                                 <p>Certains processus peuvent :</p>
