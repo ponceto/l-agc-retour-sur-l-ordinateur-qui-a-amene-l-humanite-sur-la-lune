@@ -440,11 +440,9 @@
                     </section>
                     <section>
                         <h3>Le mutliprocessing</h3>
-                        <div class="fragment fade-up">
-                            <p>Cooperative multiprogramming</p>
-                            <p>&amp;</p>
-                            <p>Preemptive multiprogramming</p>
-                        </div>
+                        <p>Cooperative multiprogramming</p>
+                        <p>&amp;</p>
+                        <p>Preemptive multiprogramming</p>
                         <aside class="notes">
                             <p>Problèmes complèxes et variés à résoudre, séparer des programmes est un enjeux majeur pour gérer la complexité et permettre une bonne testabilité.</p>
                             <p>Rappel : un seul processeur mono-coeur, et mono-thread</p>
@@ -454,13 +452,13 @@
                     </section>
                     <section>
                         <h3>Exécuteur : le "light OS" de l'AGC</h3>
-                        <p>Ensemble de routines manageant les processus.</p>
                         <p>Des espaces de mémoire vive fixes et dédiés :</p>
                         <ul>
                             <li>Core Set table</li>
                             <li>Vector Accumulator areas (VAC)</li>
                             <li>Wait list tables</li>
                         </ul>
+                        <p>Un ensemble de routines pour les manager.</p>
                         <aside class="notes">
                             <p>Routines : ajouter/retirer un job, changer la priorité, changer le job en cours</p>
                             <p>Core set : processus en cours d'exécution, 6 emplacements pour le CSM, 7 emplacements pour le LM</p>

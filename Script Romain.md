@@ -17,7 +17,10 @@ La course à la Lune est un bon objectif, car elle nécessite des avancées tech
 
 ---
 
-# C'est quoi l'AGC ? (15s)
+# C'est quoi l'AGC ? 
+
+### Intro (15s)
+
 Il est temps de vous parler de l'Apollo Guidance Computer, l'AGC.  
 
 Mais pour mieux comprendre à quoi il sert l'AGC il faut comprendre le déroulé d'une mission lunaire : 
@@ -83,6 +86,35 @@ Il envoie également des données sur son état au centre de contrôle, ce qui l
 ---
 
 # Le système
+
+### Intro Margaret Hamilton
+
+Vous devez connaitre Margaret Hamilton, elle était responsable de l'équipe du Draper Labotory du MIT. C'est elle et son équipe qui ont développé le software de l'AGC.  
+
+Ils ont développé un système multiprocessus pour une meilleure gestion de la complexité et une meilleure testabilité.
+
+### Le multiprocessing
+
+À l'époque, il existait deux grandes stratégies pour gérer un système multi-process:  
+- le "Cooperative multiprogramming", aka "je peux rendre la main"
+- le "Preemptive multiprogramming", aka "ton temps CPU est terminé"  
+
+L'AGC utilisait un mix de ces deux stratégies.
+
+### L'executeur : le light OS
+
+Il n'existait pas d'OS à proprement parler pour gérer ces processus, cette gestion était le rôle de l'executeur.  
+
+Le coeur de l'executer c'est 3 tables avec des adresses fixes :  
+- le core set qui contient les processus en cours d'exécution ainsi que leurs priorité. 6 process pour le CM, 7 pour le LM
+- le VAC qui contient l'état des processus en cours
+- la waitlist qui contient les processus programmé et le temps restant avant de les démarrer
+
+Pour administrer ces tables, il y a un ensemble de routines pour démarrer, stopper, programmer, changer la prioriter d'un processus, etc...
+
+### L'executeur : le temps et les IO
+
+
 
 
 ---
