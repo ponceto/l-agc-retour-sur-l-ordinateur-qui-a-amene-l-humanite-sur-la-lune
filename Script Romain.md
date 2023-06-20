@@ -12,12 +12,12 @@ Petit rappel des événements :
 - pour avoir un Américain en orbite terrestre, il faut attendre le vol de John Glenn (USA) le 20/02/1962 
 
 Les Américains sont en retard, et pour faire oublier ce retard ils ont besoin d'un exploit.  
-La course à la Lune est un bon objectif, car elle nécessite des avancées techniques et technologiques importantes, même pour les Soviétiques, ce qui gommerait leur avance. 
+La course à la Lune est un bon objectif, car elle nécessite des avancées techniques et technologiques importantes, même pour les Soviétiques, ce qui gommerait leur avance.
 
 
 ---
 
-# C'est quoi l'AGC ? 
+# C'est quoi l'AGC ?
 
 ### Intro (15s)
 
@@ -146,14 +146,20 @@ La phase table a également un second rôle, stocker le Major mode (MODREG) de l
 Tout ce que j'ai évoqué jusqu'à maintenant est codé en assembleur.  
 Pour permettre de s'abstraire un peu du CPU, l'AGC est doté de l'interpreteur, une autre architecture CPU "logicielle".  
 
-Elle apporte de nouvelles capacités comme les vecteurs ou encore des fonctions arithmétiques et trigonométriques (coûteuses, SIN = 5.6ms; ACOS = 9.1ms).  
+Elle apporte de nouvelles capacités comme les vecteurs ou encore des fonctions arithmétiques et trigonométriques.
 
-Les processus pouvaient mélanger du code assembleur et du code exécuté sur l'interpreteur pour maximiser l'usage des ressources et la performance.  
+Cette surcouche ajoute un coût en ressources CPU, par exemple: SIN = 5.6ms; ACOS = 9.1ms).  
+
+C'est pour cette raison que les processus peuvent mélanger du code assembleur et du code exécuté sur l'interpreteur pour maximiser l'usage des ressources et la performance.  
 
 ### Langage de haut niveau
 
+L'interpreteur est également pensé pour être utilisé avec un langage de haut niveau.  
+Celui-ci reste une forme d'assembleur, mais avec des instructions de plus haut niveau pour manipuler les types "complexes" de l'interpreteur.  
+A l'écran on peut par exemple voir des racines carrés (SQRT), des soustractions (DSU) ou encore des divisions (DDV).  
 
-
+Enfin, les traitements sont exprimés sous la forme d'expressions qui peuvent être parcourus sous la forme d'arbres.  
+Cela a un gros avantage sur la gestion de la mémoire car une simple stack/pile suffit : on ajoute les états intermédiaire, et quand on a besoin d'en récuppére un, il s'agit forcément de l'élément en au de la pile.
 
 ---
 
