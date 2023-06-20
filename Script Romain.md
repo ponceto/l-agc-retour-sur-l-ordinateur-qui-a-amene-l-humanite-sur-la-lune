@@ -1,6 +1,6 @@
 # Le contexte historique (2m30)
 
-S'il y a un événement pour marquer l'aventure lunaire, c'est sans nul doute de discours de John Fitzgerald Kennedy donné le 25/05/1961 devant le Congrès américain. Il fixe un objectif majeur pour la nation : amener un Américain sur la Lune avant la fin de la décennie.  
+S'il y a un événement pour marquer l'aventure lunaire, c'est sans nul doute de discours de John Fitzgerald Kennedy donné le 25/05/1961 devant le Congrès américain. Il y demande l'approbation du budget pour un objectif ambitieux : amener un Américain sur la Lune avant la fin de la décennie.  
 Pour bien comprendre cette décision, il faut se rappeler que nous sommes en pleine guerre froide, et que les États-Unis accusent un important retard sur les Soviétiques sur tout ce qui touche au spatial.
 
 Petit rappel des événements : 
@@ -12,7 +12,7 @@ Petit rappel des événements :
 - pour avoir un Américain en orbite terrestre, il faut attendre le vol de John Glenn (USA) le 20/02/1962 
 
 Les Américains sont en retard, et pour faire oublier ce retard ils ont besoin d'un exploit.  
-La course à la Lune est un bon objectif, car elle nécessite des avancées techniques et technologiques importantes, même pour les Soviétiques. 
+La course à la Lune est un bon objectif, car elle nécessite des avancées techniques et technologiques importantes, même pour les Soviétiques, ce qui gommerait leur avance. 
 
 
 ---
@@ -45,8 +45,8 @@ La mission première de l'AGC est donc la navigation.
 ### C'est où le haut ? (1m)
 
 La première question est : comment s'orienter ? Sur Terre la gravité définit naturellement le bas et le haut et est un référentiel adapté à beaucoup de situations du quotidien.  
-Dans l'espace, cette force est beaucoup moins adaptée à cause de l'apesanteur et parce que le vecteur gravité n'est pas fixe au cours d'une orbite. Et toutes les phases de vol ne se déroulent pas en orbite.  
-On utilise des étoiles comme points de références.  
+Dans l'espace, cette force est beaucoup moins adaptée à cause de l'apesanteur et parce que le vecteur gravité n'est pas fixe au cours d'une orbite.   
+On utilise le système Terre-Lune ainsi que des étoiles comme points de références.  
 L'AGC intègre 5 référentiels adaptés aux différentes phases d'une mission lunaire.
 
 ### Où suis-je ? (1m)
@@ -67,7 +67,7 @@ La seconde mission de l'AGC est de gérer l'orientation et la propulsion du vais
 Le DAP est un système de commande électrique qui permet au pilote de définir une attitude souhaitée sans se préoccuper des RCS. (montrer) Les RCS sont des petits moteurs.  
 Le DAP doit calculer quels moteurs allumer, quand et combien de temps. Il doit intégrer les potentiels propulseurs HS (héritage de Gemini) et la répartition de la masse du vaisseau.  
 
-Pour rappel : une force qui passe par le centre de la masse d'un objet provoque une translation. Si cette force est excentrée, elle provoque plutôt une rotation de l'objet.
+Pour rappel : une force qui passe par le centre de la masse d'un objet provoque une translation. Si cette force est excentrée, elle provoque plutôt une rotation de l'objet autour du centre de la masse.
 
 L'emplacement des RCS reste fixe, mais les configurations et la répartition des masses très variées au cours d'une mission.
 
@@ -91,7 +91,7 @@ Il envoie également des données sur son état au centre de contrôle, ce qui l
 
 Vous devez connaitre Margaret Hamilton, elle était responsable de l'équipe du Draper Labotory du MIT. C'est elle et son équipe qui ont développé le software de l'AGC.  
 
-Ils ont développé un système multiprocessus pour une meilleure gestion de la complexité et une meilleure testabilité.
+Le résultat de leurs traveux un système multiprocessus. Cela permet une meilleure gestion de la complexité et une meilleure testabilité des différents programmes.
 
 ### Le multiprocessing
 
@@ -108,11 +108,49 @@ Il n'existait pas d'OS à proprement parler pour gérer ces processus, cette ges
 Le coeur de l'executer c'est 3 tables avec des adresses fixes :  
 - le core set qui contient les processus en cours d'exécution ainsi que leurs priorité. 6 process pour le CM, 7 pour le LM
 - le VAC qui contient l'état des processus en cours
-- la waitlist qui contient les processus programmé et le temps restant avant de les démarrer
+- la WAITLIST qui contient les processus programmé et le temps restant avant de les démarrer
 
 Pour administrer ces tables, il y a un ensemble de routines pour démarrer, stopper, programmer, changer la prioriter d'un processus, etc...
 
 ### L'executeur : le temps et les IO
+
+Comme je l'ai évoqué avec la WAITLIST, la gestion du temps est importante. On retrouve dans l'AGC plusieurs timers, par exemple :  
+- Le TIMER 3 permet de déclencher les jobs programmés dans la waitlist.  
+- Le TIMER 4 permet de déclencher des routines de vérification de l'état des systèmes.  
+
+Ces interruptions provoquent des context switch : le processus en cours est interrompu, déchargé et un nouveau processus est chargé à la place.  
+Le TIMER 4 provoque à lui seul 8 context switch par seconde.  
+
+### Aparté : Les compteurs
+
+Certains appareils comme la centrale inertielle peuvent générer beaucoup d'I/O. Par exemple l'IMU a une précision de 39 seconde d'arc, une rotation de quelques degrés/seconde sur un seul axe provoque rapidement des centaines voir des milliers d'interruptions.  
+
+Les ingénieurs ont mis en place un hack pour contourner ce problème : le "cycle stealing".  
+
+Pour des opérations I/O visant a incrémenter/décrémenter des compteurs, le hardware envoie des "pulses" dans des registres dédiés du CPU.  
+Quand le CPU détecte un de ces pulses, il va "voler" son prochain cycle au processus en cours d'exécution pour aller modifier en mémoire vive le compteur impacté. L'opération reste totalement transparente pour le processus en cours.  
+
+### Exécuteur : Gestion des erreurs
+
+Le dernier rôle de l'exécuteur est la gestion des erreurs, en cas de plantage d'un processus, il existe trois scénarios possibles :  
+- P00DOO : le processus n'est pas très important et est stoppé sans redémarrage 
+- software restarts : le processus doit être redémarré, s'en suis tout une séquence d'interruption des processus, de néttoyage des tables de l'exécuteur avant de redémarrer les processus
+- AGC "fresh start" : arrive si le software restarts échoue, tout est nettoyé jusqu'au hardware, l'AGC est placé dans un état "Idle" et implique des opérations de la part des astronautes
+
+Dans le cas du software restart, les logiques de redémarrage sont stockés dans la mémoire morte : Group table & Restart table  
+Pour économiser du temps de calcul sur les processus les plus coûteux, certains d'entre eux peuvent être redémarré au milieu de leur exécution, c'est le rôle de phase table de stocker les paramètres nécessaire à cette reprise.  
+La phase table a également un second rôle, stocker le Major mode (MODREG) de l'AGC.  
+
+### Interpréteur
+
+Tout ce que j'ai évoqué jusqu'à maintenant est codé en assembleur.  
+Pour permettre de s'abstraire un peu du CPU, l'AGC est doté de l'interpreteur, une autre architecture CPU "logicielle".  
+
+Elle apporte de nouvelles capacités comme les vecteurs ou encore des fonctions arithmétiques et trigonométriques (coûteuses, SIN = 5.6ms; ACOS = 9.1ms).  
+
+Les processus pouvaient mélanger du code assembleur et du code exécuté sur l'interpreteur pour maximiser l'usage des ressources et la performance.  
+
+### Langage de haut niveau
 
 
 
