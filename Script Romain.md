@@ -12,7 +12,7 @@ Petit rappel des événements :
 - pour avoir un Américain en orbite terrestre, il faut attendre le vol de John Glenn (USA) le 20/02/1962 
 
 Les Américains sont en retard, et pour faire oublier ce retard ils ont besoin d'un exploit.  
-La course à la Lune est un bon objectif, car elle nécessite des avancées techniques et technologiques importantes, même pour les Soviétiques, ce qui gommerait leur avance.
+La course à la Lune est un bon objectif, car elle nécessite un budget colossal, des avancées techniques et technologiques importantes, même pour les Soviétiques, ce qui gommerait leur avance.
 
 
 ---
@@ -22,6 +22,8 @@ La course à la Lune est un bon objectif, car elle nécessite des avancées tech
 ### Intro (15s)
 
 Il est temps de vous parler de l'Apollo Guidance Computer, l'AGC.  
+
+Une mission ne comporte pas un mais deux AGC, un dans le CM et un dans le LM.  
 
 Mais pour mieux comprendre à quoi il sert l'AGC il faut comprendre le déroulé d'une mission lunaire : 
 
@@ -51,7 +53,7 @@ L'AGC intègre 5 référentiels adaptés aux différentes phases d'une mission l
 
 ### Où suis-je ? (1m)
 
-Ensuite il faut savoir où l'on se trouve. Les systèmes inertiels n'étant pas parfaits, il faut pouvoir réaligner la centrale en vol.  
+Ensuite il faut savoir où l'on se trouve. L'AGC est capable le calculer sa position, mais les systèmes inertiels n'étant pas parfaits, des erreurs finissent par s'accumuler. Il faut pouvoir corriger ces erreurs.  
 Les astronautes faisaient de la navigation aux étoiles pour connaitre leur position exacte. On parle ici d'optiques avec une précision de 10 secondes d'arc.  
 
 ### Où vais-je ? (45s)
@@ -80,7 +82,7 @@ Affichage à l'équipage de l'état des système et des paramètres de vol.
 ### Liaison avec le sol et télémétrie (1min)
 
 L'AGC n’est pas un système entièrement autonome, il intègre en cours de mission des données uploadées depuis le sol.  
-Il envoie également des données sur son état au centre de contrôle, ce qui leur permettait d'analyser l'état du vaisseau, mais aussi de visualiser en direct ce que voyait et faisait l'équipage. 
+Il envoie également des données sur son état au centre de contrôle, ce qui leur permettait d'analyser l'état du vaisseau, mais aussi de visualiser en direct ce que voyait et faisait l'équipage, une sorte de partage d'écran. 
 
 
 ---
@@ -91,10 +93,12 @@ Il envoie également des données sur son état au centre de contrôle, ce qui l
 
 Vous devez connaitre Margaret Hamilton, elle était responsable de l'équipe du Draper Labotory du MIT. C'est elle et son équipe qui ont développé le software de l'AGC.  
 
-Le résultat de leurs traveux un système multiprocessus. Cela permet une meilleure gestion de la complexité et une meilleure testabilité des différents programmes.
+L'AGC est un ensemble de mécaniques simples qui produisent ensemble un comportement complexe.  
+Le résultat de leurs travaux est un système multiprocessus. 
 
 ### Le multiprocessing
 
+Le multiprocessing permet une meilleure gestion de la complexité et une meilleure testabilité des différents programmes.  
 À l'époque, il existait deux grandes stratégies pour gérer un système multi-process:  
 - le "Cooperative multiprogramming", aka "je peux rendre la main"
 - le "Preemptive multiprogramming", aka "ton temps CPU est terminé"  
@@ -163,9 +167,73 @@ Cela a un gros avantage sur la gestion de la mémoire car une simple stack/pile 
 
 ---
 
+
 # Les principaux incidents
+
+Je vais maintenant vous parler des principaux incidents de vol qui ont impliqué l'AGC.
+
+### Apollo 11
+
+Le premier a eu lieu au cours de la mission Apollo 11 : on est à bord du module lunaire, en pleine descente propulsive a environ 33000 pieds au-dessus de la surface (l'altitude à laquelle vol un avion de ligne).  
+Tout se déroule bien quand soudain une alarme sonne. 1202, c'est la première d'une série de 4 alarmes au cours de cette descente (3 * 1202 et 1 * 1201).  
+
+Au cours de l'alunissage, l'AGC a 3 grandes missions : la navigation, la propulsion et calculer des solutions de rendez-vous en cas d'abandon. C'est la phase de la mission avec la plus grosse charge de travail.  
+
+Plus tôt dans la descente, la procédure demandait à l'équipage d'actionner un switch qui contrôle le radar de rendez-vous. Une malfonction hardware va alors provoquer un déphasage électrique entre l'AGC et le radar.  
+
+La conséquence est une multiplication du nombre de pulses reçus par l'AGC, environ 15% du temps CPU est alors alloué aux cycle stealing.  
+Les processus en cours sont donc ralentis et commencent à mettre trop de temps à être exécutés.  
+
+Les alarmes surviennent au moment où l'AGC tente de démarrer un processus programmé dans la WAITLIST alors qu'il n'y a plus de place disponible dans le CORE SET (1202) ou dans le VAC (1201).  
+
+À chacune de ses alarmes, l'AGC initie une séquence de "software restart" avec succès et reprend sa mission. Si cette séquence avait échoué, Apollo 11 aurait très probablement été un échec et le vaisseau potentiellement perdu.  
+
+### Apollo 14
+
+### Transcript
+
+Le second incident majeur a eu lieu au cours d'Apollo 14.  
+Pendant que le LM est en orbite lunaire et prépare sa descente, les équipes à Huston analysent les données et constatent une anomalie : le bit du "abort button" est à 1.  
+
+Après quelques manipulations demandées à l'équipage, il est conclu qu'il n'y a pas de problème logiciel et que le bouton est fautif. On suspecte un déchet de soudure qui flotte dedans et crée des contacts intermittents.  
+
+Si cela se produit au cours de la descente alors la mission sera un échec.  
+
+### Les éléments
+
+Pour comprendre la solution trouvée, il faut quelques éléments :  
+- la routine 11 : elle vérifie tous les 1/4 de seconde si le bouton est appuyé
+- le LETABORT bit est un bit en mémoire qui permet d'inhiber le "abort button"
+- le P63 : est le premier programme de la séquence de 3 programmes qui composent l'alunissage, il gère notamment la phase d'allumage des moteurs "sobrement" appelé BURNBABY
+- les P70 & P71 sont des programmes d'abandons
+- le MODREG (phase table) qui contient le major mode
+
+### La séquence d'abort
+
+Une séquence normale se déroule de la façon suivante :
+- les astronautes démarrent le P63, ce qui va inscrire le major mode 63 dans le MODREG
+- environ 15 minutes plus tard se lance le BURNBABY, avec le démarrage du moteur, le LETABORT est set, le bouton n'est plus inhibé
+- la routine 11 vérifie l'état du bouton
+- s’il y a contact, alors elle vérifie le LETABORT
+- le LETABORT ne bloque pas, R11 vérifie alors le major mode en cours
+- comme le major mode n'est pas P70 ni P71, c'est que l'abort n'a pas encore été déclenché
+- le P63 est stoppé et le P71 démarré
+
+Le hack trouvé repose sur aspect de design de l'AGC : il n'y a pas de corrélation entre le major mode stocké dans le MODREG et le major mode réellement exécuté.  
+
+### Le hack
+
+Le but du hack est de faire croire à l'AGC qu'il est déjà dans une séquence d'abort.  
+- les astronautes démarrent le P63, ce qui va inscrire le major mode 63 dans le MODREG
+- les astronautes vont alors modifier le MODREG et y inscrire le major mode 71
+- une fois la phase BURNBABY démarrée, s’il y a contact, alors la routine 11 ne déclenchera pas le P71 car elle pensera qu'elle est déjà en cours d'exécution
+- les astronautes vont alors modifier le LETABORT bit pour de nouveau inhiber le bouton
+- enfin les astronautes vont de nouveau inscrire P63 dans le MODREG pour le bon fonctionnement de l'AGC
+
+En cas de nécessité abort, ils pouvaient toujours remodifier le LETABORT ou alors manuellement démarrer le programme correspondant.
 
 
 ---
 
 # Conclusion
+
