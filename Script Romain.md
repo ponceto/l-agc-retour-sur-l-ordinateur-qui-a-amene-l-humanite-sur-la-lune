@@ -237,8 +237,8 @@ En cas de nécessité abort, ils pouvaient toujours remodifier le LETABORT ou al
 
 # Conclusion
 
-L'aventure lunaire est le fruit d'un contexte historique et technologique propices.  
-L'informatique a indéniablement permit de réaliser ces missions.  
-Les pré-requis techniques (pour l'informatique) venaient d'être atteints, il est peu probable qu'un tel projet aurait pû être réalisé une décénnie plus tôt.  
-L'AGC a ouvert la voie à de nombreuses avancées techniques et technologiques dont il n'a pas pu lui même profiter. S'il était à la pointe au moment de sa conception, il était technologiquement parlant dépassé à la fin du programme Apollo.   
-Néanmoins, il ne faut pas voir le programme Apollo comme une étape nécessaire et incontournable pour l'informatique moderne. Mais il est certain qu'il fortement a contribué à l'accélération de son développement.
+L'aventure lunaire est le résultat de contextes historique et technologique propices.  
+L'informatique a indéniablement joué un rôle clé dans le succès du programme Apollo.  
+Les briques technologiques nécessaires à un projet comme l'AGC vennaient d'être débloquées, il est peu probable que l'AGC eu été possible une décénnie plus tôt.  
+Les ingénieurs qui ont travaillé.e.s sur l'AGC ont été des pionnères et des pionners sur tout un ensemble de problématiques. Leurs solutions ont pu profiter à l'ensemble de notre industrie.  
+Cependant, ne voyez pas le programme Apollo comme une étape nécessaire au développement de l'informatique modèrne tel qu'on la connait aujourd'hui. Ces découvertes auraient été faites tôt ou tard. Apollo et l'AGC ont plus été des incubateurs et des accelerateurs pour le développement de ces technologies.  
