@@ -1,18 +1,18 @@
 # Le contexte historique (2m30)
 
-S'il y a un événement pour marquer l'aventure lunaire, c'est sans nul doute de discours de John Fitzgerald Kennedy donné le 25/05/1961 devant le Congrès américain. Il y demande l'approbation du budget pour un objectif ambitieux : amener un Américain sur la Lune avant la fin de la décennie.  
+S'il y a un événement pour marquer l'aventure lunaire, c'est sans nul doute de discours de John Fitzgerald Kennedy donné le 25/05/1961 devant le Congrès américain. Il y demande l'approbation du budget pour réaliser un objectif nationnal ambitieux : amener un Américain sur la Lune avant la fin de la décennie.  
 Pour bien comprendre cette décision, il faut se rappeler que nous sommes en pleine guerre froide, et que les États-Unis accusent un important retard sur les Soviétiques sur tout ce qui touche au spatial.
 
-Petit rappel des événements : 
-- le 04/10/1957 : Spoutnik (URSS) est le 1er satellite artificiel en orbite, c'est un véritable choque pour les Américains
-- à cette époque, les États-Unis n'ont même pas de programme spatial national, pour y remédier, il faut attendre la création de la NASA le 29/07/1958 
-- le 07/10/1959, nouveau coup de massue : la sonde soviétique LUNA 3 prend la 1er photographie de la face cachée de la Lune
-- le coup de grâce arrive le 12/04/1961 : Youri Gagarine (URSS) est le 1er homme dans l'espace, il réalise une orbite complète autour de la Terre
-- Seulement 3 semaines après Gagarine et 20 jours avant le discours de JFK, le 05/05/1961, Alan Shepard (USA) est le 1er Américain dans l'espace. **Mais** il s'agit d'un vol suborbital (aka: on l'a juste envoyé assez haut pour qu'il soit techniquement dans l'espace).
-- pour avoir un Américain en orbite terrestre, il faut attendre le vol de John Glenn (USA) le 20/02/1962 
+Petit rappel des faits :  
+Le 04/10/1957, Spoutnik (URSS) devient le 1er satellite artificiel en orbite, c'est un véritable choque pour les Américains car dans un contexte de menace nucléaire, ils deviennent vulnérable sur leur propre territoire.  
+À cette époque, les États-Unis n'ont pas encore d'organisme capable de gérer un programme spatial nationnal, pour y remédier, il faut attendre la création de la NASA le 29/07/1958.  
+Nouveau coup dur le 07/10/1959, la sonde soviétique LUNA 3 prend la 1er photographie de la face cachée de la Lune.  
+Le coup de grâce arrive le 12/04/1961; Youri Gagarine (URSS) est le 1er homme dans l'espace.  
+Trois semaines après Gagarine et 20 jours avant le discours de JFK, le 05/05/1961, Alan Shepard (USA) est le 1er Américain dans l'espace. **Mais**, là où Gagarine a réalisé une orbite complète autour de la Terre, Shepard lui se contente d'un vol suborbital. Comprennez : on l'a juste envoyé assez haut pour qu'il soit techniquement dans l'espace.  
+Pour avoir un Américain en orbite terrestre, il faut attendre le vol de John Glenn (USA) le 20/02/1962.  
 
 Les Américains sont en retard, et pour faire oublier ce retard ils ont besoin d'un exploit.  
-La course à la Lune est un bon objectif, car elle nécessite un budget colossal, des avancées techniques et technologiques importantes, même pour les Soviétiques, ce qui gommerait leur avance.
+La course à la Lune est un bon objectif, car elle nécessite un d'importants efforts économiques, industriels, mais aussi des avancées techniques et technologiques importantes, aussi bien côté Américain que Soviétique. Ceci est bénéfique pour les Américain car ça va leur permettre d'effacer leur retard.
 
 
 ---
@@ -22,8 +22,6 @@ La course à la Lune est un bon objectif, car elle nécessite un budget colossal
 ### Intro (15s)
 
 Il est temps de vous parler de l'Apollo Guidance Computer, l'AGC.  
-
-Une mission ne comporte pas un mais deux AGC, un dans le CM et un dans le LM.  
 
 Mais pour mieux comprendre à quoi il sert l'AGC il faut comprendre le déroulé d'une mission lunaire : 
 
@@ -38,9 +36,13 @@ Mais pour mieux comprendre à quoi il sert l'AGC il faut comprendre le déroulé
 - 3 jours de transit Lune-Terre et des corrections de trajectoire
 - La mission se termine avec la rentrée atmosphérique et l'amerrissage
 
+(note/suggestion) : refaire la slide avec le vaisseau qui se déplace.
+
+Vous devez maintenant comprendre qu'une mission lunaire utilisait deux vaisseaux, chacun équipé d'un AGC.  
+
 ### L'échelle (20s)
 
-Le schéma n'est pas à l'échelle, la distance Terre-Lune est de 400 000 km. La précision nécessaire pour naviguer est donc très importante.  
+Bien évidemment, le schéma n'est pas à l'échelle, la distance Terre-Lune est de 400 000 km. La précision nécessaire pour naviguer est donc très importante et trop élevée pour un humain.  
 
 La mission première de l'AGC est donc la navigation.  
 
@@ -48,13 +50,14 @@ La mission première de l'AGC est donc la navigation.
 
 La première question est : comment s'orienter ? Sur Terre la gravité définit naturellement le bas et le haut et est un référentiel adapté à beaucoup de situations du quotidien.  
 Dans l'espace, cette force est beaucoup moins adaptée à cause de l'apesanteur et parce que le vecteur gravité n'est pas fixe au cours d'une orbite.   
-On utilise le système Terre-Lune ainsi que des étoiles comme points de références.  
-L'AGC intègre 5 référentiels adaptés aux différentes phases d'une mission lunaire.
+Pour s'orienter, l'AGC utilise une base de données intégrant la position d'étoiles comme points de référence.  
+L'AGC utilise au total 5 référentiels adaptés aux différentes phases d'une mission lunaire.
 
 ### Où suis-je ? (1m)
 
 Ensuite il faut savoir où l'on se trouve. L'AGC est capable le calculer sa position, mais les systèmes inertiels n'étant pas parfaits, des erreurs finissent par s'accumuler. Il faut pouvoir corriger ces erreurs.  
 Les astronautes faisaient de la navigation aux étoiles pour connaitre leur position exacte. On parle ici d'optiques avec une précision de 10 secondes d'arc.  
+Ces techniques sont encore utilisées aujourd'hui, même sur les sondes les plus modernes.  
 
 ### Où vais-je ? (45s)
 
@@ -66,23 +69,23 @@ Il utilise 2 méthodes de calcul, l'une d'elles utilise des plans dans un cône 
 
 La seconde mission de l'AGC est de gérer l'orientation et la propulsion du vaisseau.
 
-Le DAP est un système de commande électrique qui permet au pilote de définir une attitude souhaitée sans se préoccuper des RCS. (montrer) Les RCS sont des petits moteurs.  
-Le DAP doit calculer quels moteurs allumer, quand et combien de temps. Il doit intégrer les potentiels propulseurs HS (héritage de Gemini) et la répartition de la masse du vaisseau.  
+Le DAP est un système de commande électrique qui permet à un programme ou un astronaute de définir une attitude souhaitée sans se préoccuper des RCS. (montrer) Les RCS sont des petits propulseurs sur les côtés du vaisseau.  
+Le rôle du DAP est de calculer quels moteurs allumer, quand et combien de temps. Il doit intégrer les potentiels propulseurs HS, un retour d'expérience du programme Gemini, et la répartition de la masse du vaisseau.  
 
 Pour rappel : une force qui passe par le centre de la masse d'un objet provoque une translation. Si cette force est excentrée, elle provoque plutôt une rotation de l'objet autour du centre de la masse.
 
 L'emplacement des RCS reste fixe, mais les configurations et la répartition des masses très variées au cours d'une mission.
 
-Ce problème est si complexe que le DAP représente à lui seul 10% du code de l'AGC.
+Pour vous donner un ordre d'idée de la complexité de ce problème, le DAP représente à lui seul 10% du code de l'AGC.
 
 ### Affichage (15s)
 
-Affichage à l'équipage de l'état des système et des paramètres de vol.
+Le troisième rôle de l'AGC est de fournir de la donée à l'équipage, que ce soit sur l'état des système ou encore des paramètres de vol.
 
 ### Liaison avec le sol et télémétrie (1min)
 
 L'AGC n’est pas un système entièrement autonome, il intègre en cours de mission des données uploadées depuis le sol.  
-Il envoie également des données sur son état au centre de contrôle, ce qui leur permettait d'analyser l'état du vaisseau, mais aussi de visualiser en direct ce que voyait et faisait l'équipage, une sorte de partage d'écran. 
+Il envoie également des données sur son état au centre de contrôle, ce qui leur permettait d'analyser l'état du vaisseau, mais aussi de visualiser en direct ce que voyait et faisait l'équipage, une sorte de partage d'écran.  
 
 
 ---
@@ -93,12 +96,12 @@ Il envoie également des données sur son état au centre de contrôle, ce qui l
 
 Vous devez connaitre Margaret Hamilton, elle était responsable de l'équipe du Draper Labotory du MIT. C'est elle et son équipe qui ont développé le software de l'AGC.  
 
-L'AGC est un ensemble de mécaniques simples qui produisent ensemble un comportement complexe.  
-Le résultat de leurs travaux est un système multiprocessus. 
+Le résultat de leurs travaux est un système multiprocessus, adoptant des comportements que l'on peut qualifier de sofistiqués grace à un ensemble de mécaniques simples.  
 
 ### Le multiprocessing
 
-Le multiprocessing permet une meilleure gestion de la complexité et une meilleure testabilité des différents programmes.  
+Pourquoi utiliser le multiprocessing ? Pour les mêmes raisons qu'aujourd'hui. Cela permet de découper un problème complexe en des plus petits problèmes, plus simples à appréhender, développer et tester.  
+
 À l'époque, il existait deux grandes stratégies pour gérer un système multi-process:  
 - le "Cooperative multiprogramming", aka "je peux rendre la main"
 - le "Preemptive multiprogramming", aka "ton temps CPU est terminé"  
@@ -107,97 +110,107 @@ L'AGC utilisait un mix de ces deux stratégies.
 
 ### L'executeur : le light OS
 
-Il n'existait pas d'OS à proprement parler pour gérer ces processus, cette gestion était le rôle de l'executeur.  
+Pour administrer ces processus, l'AGC n'a pas d'OS à proprement parler, à la place il utilisait ce que l'on appel l'executeur.  
 
-Le coeur de l'executer c'est 3 tables avec des adresses fixes :  
-- le core set qui contient les processus en cours d'exécution ainsi que leurs priorité. 6 process pour le CM, 7 pour le LM
-- le VAC qui contient l'état des processus en cours
-- la WAITLIST qui contient les processus programmé et le temps restant avant de les démarrer
+Le coeur de l'executer est constitué de 3 tables avec des adresses et des tailles fixes :  
+- le core set qui contient les processus en cours d'exécution ainsi que des métadonnées associées tel que la priorité. 6 process pour le CM, 7 pour le LM
+- le VAC lui contient l'état des processus en cours
+- la WAITLIST qui contient les processus programmé dans un futur proche ainsi que le temps restant avant de les démarrer
 
-Pour administrer ces tables, il y a un ensemble de routines pour démarrer, stopper, programmer, changer la prioriter d'un processus, etc...
+Pour administrer ces tables, il y a un ensemble de routines pour démarrer, stopper, programmer, changer la prioriter d'un processus, etc... Ces routines étaient appelées sur simple instruction processeur.
 
 ### L'executeur : le temps et les IO
 
-Comme je l'ai évoqué avec la WAITLIST, la gestion du temps est importante. On retrouve dans l'AGC plusieurs timers, par exemple :  
-- Le TIMER 3 permet de déclencher les jobs programmés dans la waitlist.  
-- Le TIMER 4 permet de déclencher des routines de vérification de l'état des systèmes.  
+Le suivi et la gestion du temps est important, le processeur est accompagné d'un device pour alimenter des timers qui vont provoquer des interruptions de processus en cours.  
+Par exemple le TIMER 3 permet de déclencher les jobs programmés dans la waitlist.  
+Le TIMER 4 lançait des routines de vérification du hardware 8 fois par secondes.
 
-Ces interruptions provoquent des context switch : le processus en cours est interrompu, déchargé et un nouveau processus est chargé à la place.  
-Le TIMER 4 provoque à lui seul 8 context switch par seconde.  
+Toutes ces interruptions provoquent des context switch : le processus en cours est interrompu, déchargé dans le VAC et le nouveau processus est chargé à la place. Ces interruptons ont donc un certain coût en cycles CPU et ne doivent pas survenir trop frequement.  
 
 ### Aparté : Les compteurs
 
-Certains appareils comme la centrale inertielle peuvent générer beaucoup d'I/O. Par exemple l'IMU a une précision de 39 seconde d'arc, une rotation de quelques degrés/seconde sur un seul axe provoque rapidement des centaines voir des milliers d'interruptions.  
+Et là je dois faire une aparté pour parler des compteurs.  
+Certains appareils peuvent générer beaucoup d'I/O sous la forme de ticks qui vont incrémenter ou décrémenter des compteurs.  
+Par exemple les gyroscopes de la centrale inertielle ont une précision de 39 seconde d'arc, une rotation de quelques degrés/seconde du vaisseau peut ainsi rapidement provoquer des centaines voir des milliers d'interruptions, ce qui ne peut pas être géré en context switch.  
 
-Les ingénieurs ont mis en place un hack pour contourner ce problème : le "cycle stealing".  
+Pour contourner ce promblème, les ingénieurs ont mis en place un hack : le "cycle stealing".  
 
 Pour des opérations I/O visant a incrémenter/décrémenter des compteurs, le hardware envoie des "pulses" dans des registres dédiés du CPU.  
-Quand le CPU détecte un de ces pulses, il va "voler" son prochain cycle au processus en cours d'exécution pour aller modifier en mémoire vive le compteur impacté. L'opération reste totalement transparente pour le processus en cours.  
+Quand le CPU détecte un de ces pulses, il va "voler" son prochain cycle au processus en cours d'exécution pour aller incrémenter/décrémenter en mémoire vive le compteur impacté. L'opération reste totalement transparente pour le processus en cours.  
 
 ### Exécuteur : Gestion des erreurs
 
-Le dernier rôle de l'exécuteur est la gestion des erreurs, en cas de plantage d'un processus, il existe trois scénarios possibles :  
-- P00DOO : le processus n'est pas très important et est stoppé sans redémarrage 
-- software restarts : le processus doit être redémarré, s'en suis tout une séquence d'interruption des processus, de néttoyage des tables de l'exécuteur avant de redémarrer les processus
-- AGC "fresh start" : arrive si le software restarts échoue, tout est nettoyé jusqu'au hardware, l'AGC est placé dans un état "Idle" et implique des opérations de la part des astronautes
+Le dernier rôle de l'exécuteur est la gestion des erreurs, aucun système n'est parfait, et l'AGC ne fait pas exception.  
 
-Dans le cas du software restart, les logiques de redémarrage sont stockés dans la mémoire morte : Group table & Restart table  
-Pour économiser du temps de calcul sur les processus les plus coûteux, certains d'entre eux peuvent être redémarré au milieu de leur exécution, c'est le rôle de phase table de stocker les paramètres nécessaire à cette reprise.  
-La phase table a également un second rôle, stocker le Major mode (MODREG) de l'AGC.  
+En cas de plantage d'un processus, il existe trois scénarios possibles :  
+- P00DOO : le processus n'est pas très important et est stoppé sans tentative de redémarrage  
+- software restarts : le processus est plus critique et doit être redémarré, s'en suis tout une séquence d'interruption des processus, de néttoyage des tables de l'exécuteur avant de redémarrer les processus
+- AGC "fresh start" : arrive si le software restarts échoue, tout est nettoyé jusqu'au hardware, l'AGC est placé dans un état "Idle" et implique des opérations de la part des astronautes. On veut à tout prix éviter d'en arriver là.
+
+Dans le cas du software restart, il y a deux possibilités :  
+- le programme est peut coûteux en temps de calcul et on peut se permettre de l'éxecuter en totalité  
+- le programme est coûteux et l'on va vouloir le redémarrer à au milieu de son exécution avec un état connu  
+
+Pour rédémarrer un processus, l'exécuteur utilise donc plusieurs tables :  
+- les Group table & Restart table en mémoire morte qui stockent la logique
+- la phase table en mémoire vive
+
+La phase table stocke les paramètres nécessaires pour redémarrer les processus.  
+Elle a également un second rôle important, le MODREG qui permet de stocker le Major mode dans lequel se trouve l'AGC.  
+De façon simple, le major mode correspond à un processus long spécifique à une phase spécifie de la mission, on y reviendra.
 
 ### Interpréteur
 
-Tout ce que j'ai évoqué jusqu'à maintenant est codé en assembleur.  
-Pour permettre de s'abstraire un peu du CPU, l'AGC est doté de l'interpreteur, une autre architecture CPU "logicielle".  
+Tout ce que j'ai évoqué jusqu'à maintenant est codé en assembleur, nommé "Basique" par les ingénieur. (Aucun lien avec le langage du même nom)  
+Pour permettre de s'abstraire des limitations du processeur et du Basique, l'AGC est doté de l'interpreteur, une architecture CPU "logicielle".  
 
 Elle apporte de nouvelles capacités comme les vecteurs ou encore des fonctions arithmétiques et trigonométriques.
 
-Cette surcouche ajoute un coût en ressources CPU, par exemple: SIN = 5.6ms; ACOS = 9.1ms).  
+Cette surcouche ajoute un surcoût en ressources CPU, par exemple pour des opérations trigonométriques: SIN = 5.6ms; ACOS = 9.1ms.  
 
 C'est pour cette raison que les processus peuvent mélanger du code assembleur et du code exécuté sur l'interpreteur pour maximiser l'usage des ressources et la performance.  
 
 ### Langage de haut niveau
 
-L'interpreteur est également pensé pour être utilisé avec un langage de haut niveau.  
-Celui-ci reste une forme d'assembleur, mais avec des instructions de plus haut niveau pour manipuler les types "complexes" de l'interpreteur.  
+L'interpreteur est également pensé pour être utilisé avec son langage de haut niveau, l'interpretive.  
+Là aussi, rien à voir avec nos langages modèrnes compilés. Il s'agit d'une forme d'assembleur, mais avec des instructions de plus haut niveau pour manipuler les types "complexes" de l'interpreteur.  
 A l'écran on peut par exemple voir des racines carrés (SQRT), des soustractions (DSU) ou encore des divisions (DDV).  
 
 Enfin, les traitements sont exprimés sous la forme d'expressions qui peuvent être parcourus sous la forme d'arbres.  
-Cela a un gros avantage sur la gestion de la mémoire car une simple stack/pile suffit : on ajoute les états intermédiaire, et quand on a besoin d'en récuppére un, il s'agit forcément de l'élément en au de la pile.
+Cela a un gros avantage sur la gestion de la mémoire facilité car une simple stack/pile suffit. En parcourant l'arbre, on ajoute les états intermédiaire dans la stack, et quand on a besoin d'en récuppérer un, il s'agit forcément de l'élément en au de la pile.
 
 ---
 
 
 # Les principaux incidents
 
-Je vais maintenant vous parler des principaux incidents de vol qui ont impliqué l'AGC.
+Je vais maintenant vous parler des deux principaux incidents de vol qui ont impliqué l'AGC.
 
 ### Apollo 11
 
 Le premier a eu lieu au cours de la mission Apollo 11 : on est à bord du module lunaire, en pleine descente propulsive a environ 33000 pieds au-dessus de la surface (l'altitude à laquelle vol un avion de ligne).  
-Tout se déroule bien quand soudain une alarme sonne. 1202, c'est la première d'une série de 4 alarmes au cours de cette descente (3 * 1202 et 1 * 1201).  
+Tout se déroule bien quand soudain le master alarme sonne. Program alarm, 1202.  
 
-Au cours de l'alunissage, l'AGC a 3 grandes missions : la navigation, la propulsion et calculer des solutions de rendez-vous en cas d'abandon. C'est la phase de la mission avec la plus grosse charge de travail.  
+Il faut bin comprendre que la descente vers la lune est une phase de la mission avec ce qui est peut-être la plus grosse charge de travail pour l'AGC : il doit gérer la navigation, la propulsion, mais aussi calculer des solutions de rendez-vous en cas d'abandon.  
 
-Plus tôt dans la descente, la procédure demandait à l'équipage d'actionner un switch qui contrôle le radar de rendez-vous. Une malfonction hardware va alors provoquer un déphasage électrique entre l'AGC et le radar.  
-
-La conséquence est une multiplication du nombre de pulses reçus par l'AGC, environ 15% du temps CPU est alors alloué aux cycle stealing.  
+L'origine du problème est un malheureux déphasage électrique entre le radar de rdv et l'AGC.  
+La conséquence de ce déphasage est un AGC qui va se faire flooder par les pulses, environ 15% du temps CPU est alors alloué aux cycle stealing.  
 Les processus en cours sont donc ralentis et commencent à mettre trop de temps à être exécutés.  
 
-Les alarmes surviennent au moment où l'AGC tente de démarrer un processus programmé dans la WAITLIST alors qu'il n'y a plus de place disponible dans le CORE SET (1202) ou dans le VAC (1201).  
+À partir de là, il n'est plus qu'une question de temps avant que l'AGC ne tente de démarrer un processus de la WAITLIST alors que le coreset est plein : Executive overflow, program alarm, 1202.  
 
-À chacune de ses alarmes, l'AGC initie une séquence de "software restart" avec succès et reprend sa mission. Si cette séquence avait échoué, Apollo 11 aurait très probablement été un échec et le vaisseau potentiellement perdu.  
+Ce type d'erreur va avoir lieu à 5 reprises au cour de la descente. Fort heureusement la séquence de "software restart" va s'exécuter avec succès à chaque fois et l'AGC reprend son travail sans aucune incidence pour la descente.
 
 ### Apollo 14
 
 ### Transcript
 
-Le second incident majeur a eu lieu au cours d'Apollo 14.  
-Pendant que le LM est en orbite lunaire et prépare sa descente, les équipes à Huston analysent les données et constatent une anomalie : le bit du "abort button" est à 1.  
+Le second incident majeur a eu lieu au cours d'Apollo 14. Nous somme de nouveau à bord du LM mais cette fois-ci en orbite lunaire.  
+Pendant que les astronautes préparent le LM pour la descente, les équipes à Huston analysent les données et constatent une anomalie : le bit du "abort button" est à 1.  
 
-Après quelques manipulations demandées à l'équipage, il est conclu qu'il n'y a pas de problème logiciel et que le bouton est fautif. On suspecte un déchet de soudure qui flotte dedans et crée des contacts intermittents.  
+Après quelques manipulations demandées à l'équipage, il est conclu que le bouton est fautif. On suspecte un débrit de soudure qui flotte dedans et crée des contacts intermittents.  
 
-Si cela se produit au cours de la descente alors la mission sera un échec.  
+Si cela se produit au cours de la descente alors la mission sera un échec. En quelques heures, les ingénieurs vont fournir une solution de contournement.  
 
 ### Les éléments
 
@@ -240,5 +253,7 @@ En cas de nécessité abort, ils pouvaient toujours remodifier le LETABORT ou al
 L'aventure lunaire est le résultat de contextes historique et technologique propices.  
 L'informatique a indéniablement joué un rôle clé dans le succès du programme Apollo.  
 Les briques technologiques nécessaires à un projet comme l'AGC vennaient d'être débloquées, il est peu probable que l'AGC eu été possible une décénnie plus tôt.  
+Au moment où JFK a prononcé son discours, l'informatique était émergent à la NASA. Les calculs qui ont permis le premier vol d'Alan Shepard étaient encore réalisés par une armée de calculatrices humaines, des personnes, en majorité des femmes, dont le métier était de réaliser ces calculs.  
+Moins de dix ans après, un ordinateur assé comptacte pour tenir dans une capsule arrivait sur la surface de la Lune. À la fin du programme Apollo, l'AGC était un ordinateur dépassé.  
 Les ingénieurs qui ont travaillé.e.s sur l'AGC ont été des pionnères et des pionners sur tout un ensemble de problématiques. Leurs solutions ont pu profiter à l'ensemble de notre industrie.  
-Cependant, ne voyez pas le programme Apollo comme une étape nécessaire au développement de l'informatique modèrne tel qu'on la connait aujourd'hui. Ces découvertes auraient été faites tôt ou tard. Apollo et l'AGC ont plus été des incubateurs et des accelerateurs pour le développement de ces technologies.  
+Le programme Apollo a donc été un formidable accélerateur pour le développement de l'électronique et de l'informatique morderne.  
