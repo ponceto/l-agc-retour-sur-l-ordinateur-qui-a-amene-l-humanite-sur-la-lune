@@ -94,7 +94,7 @@ Il envoie également des données sur son état au centre de contrôle, ce qui l
 
 ### Intro Margaret Hamilton
 
-Vous devez connaitre Margaret Hamilton, elle était responsable de l'équipe du Draper Labotory du MIT. C'est elle et son équipe qui ont développé le software de l'AGC.  
+Vous devez connaitre Margaret Hamilton, elle était responsable de l'équipe du Draper Labotory du MIT à partir de 1970. Ce sont ces équipes qui ont développé le software de l'AGC.  
 
 Le résultat de leurs travaux est un système multiprocessus, adoptant des comportements que l'on peut qualifier de sofistiqués grace à un ensemble de mécaniques simples.  
 
@@ -113,8 +113,8 @@ L'AGC utilisait un mix de ces deux stratégies.
 Pour administrer ces processus, l'AGC n'a pas d'OS à proprement parler, à la place il utilisait ce que l'on appel l'executeur.  
 
 Le coeur de l'executer est constitué de 3 tables avec des adresses et des tailles fixes :  
-- le core set qui contient les processus en cours d'exécution ainsi que des métadonnées associées tel que la priorité. 6 process pour le CM, 7 pour le LM
-- le VAC lui contient l'état des processus en cours
+- le core set qui contient les processus en cours d'exécution ainsi que des métadonnées associées tel que la priorité. 6 emplacements de 12 mots pour le CM, 7 pour le LM
+- le VAC lui contient l'état des processus en cours d'exécution dans l'interpréteur, 5 emplacements de 44 mots
 - la WAITLIST qui contient les processus programmé dans un futur proche ainsi que le temps restant avant de les démarrer
 
 Pour administrer ces tables, il y a un ensemble de routines pour démarrer, stopper, programmer, changer la prioriter d'un processus, etc... Ces routines étaient appelées sur simple instruction processeur.
@@ -191,7 +191,9 @@ Je vais maintenant vous parler des deux principaux incidents de vol qui ont impl
 Le premier a eu lieu au cours de la mission Apollo 11 : on est à bord du module lunaire, en pleine descente propulsive a environ 33000 pieds au-dessus de la surface (l'altitude à laquelle vol un avion de ligne).  
 Tout se déroule bien quand soudain le master alarme sonne. Program alarm, 1202.  
 
-Il faut bin comprendre que la descente vers la lune est une phase de la mission avec ce qui est peut-être la plus grosse charge de travail pour l'AGC : il doit gérer la navigation, la propulsion, mais aussi calculer des solutions de rendez-vous en cas d'abandon.  
+Il faut bien comprendre que la descente vers la lune est une phase de la mission avec ce qui est peut-être la plus grosse charge de travail pour l'AGC : il doit gérer la navigation, la propulsion, intégrer les données de l'IMU et de la radio sonde.  
+
+Il faut également que des systèmes comme le radar de rdv soient prêts en cas d'abandon de la descente.
 
 L'origine du problème est un malheureux déphasage électrique entre le radar de rdv et l'AGC.  
 La conséquence de ce déphasage est un AGC qui va se faire flooder par les pulses, environ 15% du temps CPU est alors alloué aux cycle stealing.  
@@ -199,7 +201,7 @@ Les processus en cours sont donc ralentis et commencent à mettre trop de temps 
 
 À partir de là, il n'est plus qu'une question de temps avant que l'AGC ne tente de démarrer un processus de la WAITLIST alors que le coreset est plein : Executive overflow, program alarm, 1202.  
 
-Ce type d'erreur va avoir lieu à 5 reprises au cour de la descente. Fort heureusement la séquence de "software restart" va s'exécuter avec succès à chaque fois et l'AGC reprend son travail sans aucune incidence pour la descente.
+Ce type d'erreur va avoir lieu à 5 reprises au cour de la descente. Fort heureusement la séquence de "software restart" va s'exécuter avec succès à chaque fois et l'AGC reprend son travail sans incidence majeur pour la descente.
 
 ### Apollo 14
 
