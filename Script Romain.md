@@ -1,7 +1,7 @@
 # Le contexte historique (2m30)
 
 S'il y a un événement pour marquer l'aventure lunaire, c'est sans nul doute de discours de John Fitzgerald Kennedy donné le 25/05/1961 devant le Congrès américain. Il y demande l'approbation du budget pour réaliser un objectif nationnal ambitieux : amener un Américain sur la Lune avant la fin de la décennie.  
-Pour bien comprendre cette décision, il faut se rappeler que nous sommes en pleine guerre froide, et que les États-Unis accusent un important retard sur les Soviétiques sur tout ce qui touche au spatial.
+Pour bien comprendre cette décision, il faut se rappeler que nous sommes en pleine guerre froide, avec une forte rivalité entre États-Unis l'Union Soviétiques.
 
 Petit rappel des faits :  
 Le 04/10/1957, Spoutnik (URSS) devient le 1er satellite artificiel en orbite, c'est un véritable choque pour les Américains car dans un contexte de menace nucléaire, ils deviennent vulnérable sur leur propre territoire.  
@@ -35,8 +35,6 @@ Mais pour mieux comprendre à quoi il sert l'AGC il faut comprendre le déroulé
 - Une fois les astronautes et les roches transférés dans le CM, le LM est abandonné en orbite lunaire, le CM allume son moteur direction la Terre.
 - 3 jours de transit Lune-Terre et des corrections de trajectoire
 - La mission se termine avec la rentrée atmosphérique et l'amerrissage
-
-(note/suggestion) : refaire la slide avec le vaisseau qui se déplace.
 
 Vous devez maintenant comprendre qu'une mission lunaire utilisait deux vaisseaux, chacun équipé d'un AGC.  
 
@@ -94,7 +92,7 @@ Il envoie également des données sur son état au centre de contrôle, ce qui l
 
 ### Intro Margaret Hamilton
 
-Vous devez connaitre Margaret Hamilton, elle était responsable de l'équipe du Draper Labotory du MIT à partir de 1970. Ce sont ces équipes qui ont développé le software de l'AGC.  
+Vous devez connaitre Margaret Hamilton, elle était responsable de l'équipe du Draper Labotory du MIT à partir de 1970. C'est ce laboratoire qui a développé la centrale intertielle, mais aussi l'AGC, aussi bien du point de vue hardware que software.  
 
 Le résultat de leurs travaux est un système multiprocessus, adoptant des comportements que l'on peut qualifier de sofistiqués grace à un ensemble de mécaniques simples.  
 
