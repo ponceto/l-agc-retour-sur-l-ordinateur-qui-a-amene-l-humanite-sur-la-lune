@@ -66,6 +66,14 @@ img.rounded-32 {
     border-radius: 32px;
 }
 
+img.portrait {
+    border-radius: 100%;
+    width: 125px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 table.about {
     border: none;
     font-family: monospace;
@@ -85,6 +93,10 @@ table.about td {
 
 .color-twitter {
     color: #1d9bf0 !important;
+}
+
+.color-bluesky {
+    color: #0085ff !important;
 }
 
 .color-github {
