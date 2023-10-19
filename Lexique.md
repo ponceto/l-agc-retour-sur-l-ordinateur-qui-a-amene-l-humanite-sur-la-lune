@@ -20,3 +20,4 @@ Acronymes et mots techiques :
 | Major mode register       | MODREG   | "mode regue"                              | Stocke le mode majeur dans lequel se trouve l'AGC                                                             |
 | Porte NON-OU              | NOR      | "nore"                                    | Porte logique donnant 1 si toutes les entrées sont à zéro                                                     |
 | Porte NON-ET              | NAND     | "nande"                                   | Porte logique donnant 1 si l'une des entrées est à zéro                                                       |
+| Entrée/Sortie             | I/O      | "aïe-o"          |   |
