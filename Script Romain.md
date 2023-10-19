@@ -256,4 +256,5 @@ Les briques technologiques nécessaires à un projet comme l'AGC vennaient d'êt
 Au moment où JFK a prononcé son discours, l'informatique était émergent à la NASA. Les calculs qui ont permis le premier vol d'Alan Shepard étaient encore réalisés par une armée de calculatrices humaines, des personnes, en majorité des femmes, dont le métier était de réaliser ces calculs.  
 Moins de dix ans après, un ordinateur assé comptacte pour tenir dans une capsule arrivait sur la surface de la Lune. À la fin du programme Apollo, l'AGC était un ordinateur dépassé.  
 Les ingénieurs qui ont travaillé.e.s sur l'AGC ont été des pionnères et des pionners sur tout un ensemble de problématiques. Leurs solutions ont pu profiter à l'ensemble de notre industrie.  
-Le programme Apollo a donc été un formidable accélerateur pour le développement de l'électronique et de l'informatique morderne.  
+Le programme Apollo a donc été un formidable accélerateur (et non une étape indispensable) pour le développement de l'électronique et de l'informatique morderne.  
+Si parfois vous vous intérrogez sur l'utilité de financer de tels programmes, souvennez-vous qu'ils impliquent de la recherche et des développements de technologies nouvelles qui peuvent par la suite trouver des applications dans votre quotidien.  
