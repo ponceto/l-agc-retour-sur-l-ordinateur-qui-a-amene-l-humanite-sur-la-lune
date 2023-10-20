@@ -33,3 +33,8 @@ Sujets abordés :
   - legacy
   - Industrialisation de la production de composants électroniques
   - Systèmes de commandes de vol électriques (“fly-by-wire”)
+
+## LIEN VERS LA PRESENTATION
+
+  - https://www.emaxilde.net/posts/2023/06/29/l-agc-retour-sur-l-ordinateur-qui-a-amene-l-humanite-sur-la-lune.html
+
