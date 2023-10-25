@@ -226,39 +226,27 @@ Après quelques manipulations demandées à l'équipage, il est conclu que le bo
 
 Si cela se produit au cours de la descente alors la mission sera un échec. En quelques heures, les ingénieurs vont fournir une solution de contournement.  
 
-### Les éléments
+### Les controles
 
-Pour comprendre la solution trouvée, il faut quelques éléments :  
+Par défaut, le bouton est inhibé par un simple bit en mémoire vive, celui-ci est modifié au moment de l'allumage du moteur de sorte à rendre le bouton actif.  
+Modifier le programme n'est pas possible puisqu'il est inscrit dans la CORE ROPE.  
+Il est par contre possible de le désactiver via quelques instructions sur le DSKY, mais le temps de réaliser cette manipulation, un contact peut être détecté.  
 
-- la routine 11 : elle vérifie tous les 1/4 de seconde si le bouton est appuyé
-- le LETABORT bit est un bit en mémoire qui permet d'inhiber le "abort button"
-- le P63 : est le premier programme de la séquence de 3 programmes qui composent l'alunissage, il gère notamment la phase d'allumage des moteurs "sobrement" appelé BURNBABY
-- les P70 & P71 sont des programmes d'abandons
-- le MODREG (phase table) qui contient le major mode
+En cas de contact, on effectue deux vérifications avant d'interompre la descente :  
 
-### La séquence d'abort
+- Le bouton est-il actif ? Il s'agit du bit que l'on souhaite modifier.  
+- Est-on déjà entrain d'abandonner l'alunissage ? Pour se faire on va lire le major mode inscrit dans le MODREG.  
 
-Une séquence normale se déroule de la façon suivante :
+Le but va donc être de faire croire à l'AGC qu'il est déjà dans une logique d'abandon le temps de la modification du bit.  
 
-- les astronautes démarrent le P63, ce qui va inscrire le major mode 63 dans le MODREG
-- environ 15 minutes plus tard se lance le BURNBABY, avec le démarrage du moteur, le LETABORT est set, le bouton n'est plus inhibé
-- la routine 11 vérifie l'état du bouton
-- s’il y a contact, alors elle vérifie le LETABORT
-- le LETABORT ne bloque pas, R11 vérifie alors le major mode en cours
-- comme le major mode n'est pas P70 ni P71, c'est que l'abort n'a pas encore été déclenché
-- le P63 est stoppé et le P71 démarré
-
-Le hack trouvé repose sur aspect de design de l'AGC : il n'y a pas de corrélation entre le major mode stocké dans le MODREG et le major mode réellement exécuté.  
+Le hack repose sur un détail de design de l'AGC : le major mode inscrit dans le MODEREG n'est pas nécessairement le major mode réellement executé par l'ordinateur.  
 
 ### Le hack
 
-Le but du hack est de faire croire à l'AGC qu'il est déjà dans une séquence d'abort.  
+Les astronautes, par le biais du DSKY, vont donc aller modifier cette valeur et y inscrire 71 (major mode d'abandon) avant le démarrage du moteur. Ainsi en cas de contact, la seconde vérification de la routine va empêcher l'abandon.  
+Une fois le moteur démarré, les astronautes vont modifier le bit de sorte à désactiver le bouton, puis ils vont réinscrire le programme d'origine dans le MODREG : 63.
 
-- les astronautes démarrent le P63, ce qui va inscrire le major mode 63 dans le MODREG
-- les astronautes vont alors modifier le MODREG et y inscrire le major mode 71
-- une fois la phase BURNBABY démarrée, s’il y a contact, alors la routine 11 ne déclenchera pas le P71 car elle pensera qu'elle est déjà en cours d'exécution
-- les astronautes vont alors modifier le LETABORT bit pour de nouveau inhiber le bouton
-- enfin les astronautes vont de nouveau inscrire P63 dans le MODREG pour le bon fonctionnement de l'AGC
+En cas de nécessité abort, les astronautes pouvaient toujours démarrer manuellement le programme d'abandon : VERB 37 ENTER 71 ENTER
 
 En cas de nécessité abort, ils pouvaient toujours remodifier le LETABORT ou alors manuellement démarrer le programme correspondant : VERB 37 ENTER 71 ENTER
 
