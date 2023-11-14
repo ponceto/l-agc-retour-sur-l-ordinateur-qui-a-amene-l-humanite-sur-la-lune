@@ -97,7 +97,7 @@ Il envoie également des données sur son état au centre de contrôle, ce qui l
 
 Vous devez connaitre Margaret Hamilton, elle était responsable de l'équipe du Draper Labotory du MIT à partir de 1970. C'est ce laboratoire qui a développé la centrale intertielle, mais aussi l'AGC, aussi bien du point de vue hardware que software.  
 
-Le résultat de leurs travaux est un système multiprocessus, adoptant des comportements que l'on peut qualifier de sofistiqués grace à un ensemble de mécaniques simples.  
+Le résultat de leurs travaux est un système mono-thread multiprocessus, adoptant des comportements que l'on peut qualifier de sofistiqués grace à un ensemble de mécaniques simples.  
 
 ### Le multiprocessing
 
@@ -124,7 +124,8 @@ Pour administrer ces tables, il y a un ensemble de routines pour démarrer, stop
 
 ### L'executeur : le temps et les IO
 
-Le suivi et la gestion du temps est important, le processeur est accompagné d'un device pour alimenter des timers qui vont provoquer des interruptions de processus en cours.  
+Le suivi et la gestion du temps est important, on doit pouvoir démarrer des processus à des moments précis.  
+Le processeur est accompagné d'un device pour alimenter des timers qui vont provoquer des interruptions de processus en cours.  
 Par exemple le TIMER 3 permet de déclencher les jobs programmés dans la waitlist.  
 Le TIMER 4 lançait des routines de vérification du hardware 8 fois par secondes.
 
@@ -215,7 +216,7 @@ Ce type d'erreur va avoir lieu à 5 reprises au cour de la descente :
 Fort heureusement la séquence de "software restart" va s'exécuter avec succès à chaque fois et l'AGC reprend son travail sans incidence majeur pour la descente.  
 Ceci a tout de même été une source de stress supplémentaire pour les astronautes, d'autant que sur un redémarrage, l'affiage du DSKY a été perdu pendant une dizaine de seconde alors qu'il devait fournir des informations critiques sur les paramètres de vol.  
 
-### Apollo 14 (TODO : à retravailler / simplifier)
+### Apollo 14 
 
 ### Transcript
 
@@ -226,11 +227,11 @@ Après quelques manipulations demandées à l'équipage, il est conclu que le bo
 
 Si cela se produit au cours de la descente alors la mission sera un échec. En quelques heures, les ingénieurs vont fournir une solution de contournement.  
 
-### Les controles
-
 Par défaut, le bouton est inhibé par un simple bit en mémoire vive, celui-ci est modifié au moment de l'allumage du moteur de sorte à rendre le bouton actif.  
 Modifier le programme n'est pas possible puisqu'il est inscrit dans la CORE ROPE.  
 Il est par contre possible de le désactiver via quelques instructions sur le DSKY, mais le temps de réaliser cette manipulation, un contact peut être détecté.  
+
+### Les controles
 
 En cas de contact, on effectue deux vérifications avant d'interompre la descente :  
 
